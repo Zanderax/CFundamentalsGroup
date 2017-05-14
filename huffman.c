@@ -38,7 +38,7 @@ typedef struct {
 char* encode( char*, uint );
 bool isIn( byte*, uint, byte );
 uint countInList( byte*, uint, byte );	
-ByteList* countBytes( byte* list, uint size)
+ByteList* countBytes( byte*, uint );
 uint countUnique( byte*, uint );
 
 int main()
