@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I. -g
 
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)

@@ -14,7 +14,7 @@ typedef int bool;
 #define TRUE 1
 #define FALSE 0
 
-#define dataSize 5
+#define dataSize 9
 
 typedef struct {
 	char name[MAX_NAME_SIZE];
@@ -27,24 +27,24 @@ typedef struct {
 
 typedef struct {
 	byte data;
-	int count;
+	uint count;
 } ByteListElement;
 
 typedef struct {
-	int size;
-	ByteListElement element[];
+	uint size;
+	ByteListElement *elements;
 } ByteList;
 
 char* encode( char*, uint );
 bool isIn( byte*, uint, byte );
 uint countInList( byte*, uint, byte );	
 ByteList* countBytes( byte*, uint );
+bool isInElements( ByteListElement*, uint, byte );
 uint countUnique( byte*, uint );
 
 int main()
 {
-	printf( "Huffman::Main()\n");
-	byte data[dataSize] = { 1, 2, 3, 2, 1 };
+	byte data[dataSize] = { 1, 2, 3, 2, 1, 6, 8, 8, 7 };
 	byte *returnData = encode( data, dataSize );
 	return 0;
 }
@@ -61,34 +61,40 @@ byte* encode( byte *data, uint size )
 	byte unique[size];
 	uint uniqueCount = 0;
 	uint i;
-	
-	for (i = 0; i < size; ++i)
+
+	ByteList *byteList = countBytes( data, size );
+/* TODO - Data is not being put in the array. Run and see. */	
+	printf( "ByteList Size = %u\n", byteList->size );
+	for (i = 0; i < byteList->size; ++i)
 	{
-		if (!isIn( unique, size, data[i] ))
-		{
-			unique[uniqueCount] = data[i];
-			++uniqueCount;	
-		}
+		printf( "Data = %c\n", byteList->elements[i].data );
+		printf( "Count = %d\n", byteList->elements[i].count );
 	}
-
-	for (i = 0; i < uniqueCount; ++i)
-		printf( "%d\n", unique[i] );
-
+	
 	return data;
 }
 
 ByteList* countBytes( byte* list, uint size)
 {
 	/* Initalize ByteList to correct length */
-	uint unique = countUnique( list, size );
-	uint listSize = sizeof( ByteList ) + sizeof( ByteListElement ) * unique;
-	ByteList * byteList = calloc( listSize , 1 );
-	byteList->size = unique;
+	uint uniqueCount = countUnique( list, size );
+	uint listSize = sizeof( ByteList ) + 
+					sizeof( ByteListElement* ) * uniqueCount;
+	ByteList * byteList = calloc( 1, listSize );
 
-	uint i;
+	byteList->elements = calloc( size, sizeof( ByteListElement ) );
+	printf( "UniqueCount = %u\n", uniqueCount );	
+	byteList->size = uniqueCount;
+
+	uint i, count = 0;
 	for (i = 0; i < size; ++i)
 	{
-		i++;
+		if(!isInElements( byteList->elements, count, list[i] ))
+		{
+			byteList->elements[count].data = list[i];
+			byteList->elements[count].count = 
+					countInList( list, size, list[i] );
+		}		
 	}
 
 	return byteList;
@@ -96,13 +102,14 @@ ByteList* countBytes( byte* list, uint size)
 
 uint countUnique( byte* list, uint size )
 {
-	uint i, count;
+	uint i, count = 0;
 	byte unique[size];
 	for (i = 0; i < size; ++i)
 	{
 		if ( !isIn( unique, count, list[i] ) )
 		{
 			unique[count] = list[i];
+			count++;
 		}
 	}
 	return count;
@@ -116,6 +123,17 @@ bool isIn( byte* list, uint size, byte value )
 	uint i;
 	for (i = 0; i < size; ++i)
 		if (list[i] == value)
+			return TRUE;
+
+	return FALSE;
+}
+
+//Checks if byte is in a list of ByteListElements
+bool isInElements( ByteListElement* list, uint size, byte value )
+{
+	uint i;
+	for (i = 0; i < size; ++i)
+		if (list[i].data == value)
 			return TRUE;
 	return FALSE;
 }
