@@ -5,4 +5,4 @@ CFLAGS=-I. -g
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 huffman: huffman.o 
-	gcc -o huffman huffman.o -I.
+	gcc -o huffman.out huffman.o -I.
