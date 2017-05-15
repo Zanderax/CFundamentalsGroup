@@ -34,3 +34,6 @@
 
 # Core files
 core
+
+# Swap Files
+*.sw*
