@@ -59,6 +59,10 @@ int main()
 	out - byte - pointer to huffman code
 */
 
+/* TODO - Convery list of card structs to byte list */
+
+/* TODO - Decompress */
+
 byte* encode( byte *data, uint size ) 
 {
 	byte unique[size];
