@@ -14,7 +14,7 @@ typedef int bool;
 #define TRUE 1
 #define FALSE 0
 
-#define dataSize 9
+#define dataSize 10
 
 typedef struct {
 	char name[MAX_NAME_SIZE];
@@ -41,10 +41,12 @@ uint countInList( byte*, uint, byte );
 ByteList* countBytes( byte*, uint );
 bool isInElements( ByteListElement*, uint, byte );
 uint countUnique( byte*, uint );
+void sortByteList ( ByteList*, uint );
+void swapBytes ( ByteList*, uint, uint );
 
 int main()
 {
-	byte data[dataSize] = { '1', '1', '1', '1', '1', '6', '8', '8', '7' };
+	byte data[dataSize] = { '1', '8', '1', '6', '1', '6', '8', '8', '7', '1' };
 	byte *returnData = encode( data, dataSize );
 	return 0;
 }
@@ -97,7 +99,38 @@ ByteList* countBytes( byte* list, uint size)
 		}		
 	}
 
+	sortByteList( byteList, size );
+
 	return byteList;
+}
+
+/* Selection Sort */
+void sortByteList ( ByteList* list, uint size )
+{
+	uint i, j;
+	uint maxCount, maxIndex;
+	for (i = 0; i < size; ++i)
+	{
+		maxCount = 0;
+		maxIndex = 0;
+		
+		for (j = i; j < size; ++j)
+		{
+			if (list->elements[j].count > maxCount)
+			{
+				maxCount = list->elements[j].count;
+				maxIndex = j;
+			}
+		}
+		swapBytes( list, i, maxIndex );
+	}	
+}
+
+void swapBytes ( ByteList* list, uint first, uint second )
+{
+	ByteListElement temp = list->elements[first];
+	list->elements[first] = list->elements[second];
+	list->elements[second] = list->elements[first];
 }
 
 uint countUnique( byte* list, uint size )
