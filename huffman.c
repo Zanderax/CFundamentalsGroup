@@ -44,7 +44,7 @@ uint countUnique( byte*, uint );
 
 int main()
 {
-	byte data[dataSize] = { 1, 2, 3, 2, 1, 6, 8, 8, 7 };
+	byte data[dataSize] = { '1', '1', '1', '1', '1', '6', '8', '8', '7' };
 	byte *returnData = encode( data, dataSize );
 	return 0;
 }
@@ -55,7 +55,6 @@ int main()
 	out - byte - pointer to huffman code
 */
 
-//TEMP - Currently puts all unique values into unique[] and prints them all
 byte* encode( byte *data, uint size ) 
 {
 	byte unique[size];
@@ -94,6 +93,7 @@ ByteList* countBytes( byte* list, uint size)
 			byteList->elements[count].data = list[i];
 			byteList->elements[count].count = 
 					countInList( list, size, list[i] );
+			++count;
 		}		
 	}
 
