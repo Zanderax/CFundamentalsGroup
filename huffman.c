@@ -38,11 +38,13 @@ typedef struct {
 char* encode( char*, uint );
 bool isIn( byte*, uint, byte );
 uint countInList( byte*, uint, byte );	
-ByteList* countBytes( byte*, uint );
+ByteList* createByteList( byte*, uint );
 bool isInElements( ByteListElement*, uint, byte );
 uint countUnique( byte*, uint );
 void sortByteList ( ByteList*, uint );
 void swapBytes ( ByteList*, uint, uint );
+void populateByteList ( ByteList*, byte*, uint );
+ByteList* initializeByteList( byte*, uint );
 
 int main()
 {
@@ -63,8 +65,17 @@ byte* encode( byte *data, uint size )
 	uint uniqueCount = 0;
 	uint i;
 
-	ByteList *byteList = countBytes( data, size );
-/* TODO - Data is not being put in the array. Run and see. */	
+	ByteList *byteList = createByteList( data, size );
+
+	/* TODO - Create Huffman Tree */
+
+	/* TODO - Create Huffman Code */
+
+	/* TODO - Compress Data With Huffman Code */
+
+	/* TODO - Return Huffman Code and Compressed Data */
+
+	/* Display data */
 	printf( "ByteList Size = %u\n", byteList->size );
 	for (i = 0; i < byteList->size; ++i)
 	{
@@ -75,33 +86,43 @@ byte* encode( byte *data, uint size )
 	return data;
 }
 
-ByteList* countBytes( byte* list, uint size)
+ByteList* createByteList( byte* data, uint size)
 {
-	/* Initalize ByteList to correct length */
-	uint uniqueCount = countUnique( list, size );
-	uint listSize = sizeof( ByteList ) + 
-					sizeof( ByteListElement* ) * uniqueCount;
-	ByteList * byteList = calloc( 1, listSize );
+	ByteList *byteList = initializeByteList( data, size );
 
-	byteList->elements = calloc( size, sizeof( ByteListElement ) );
-	printf( "UniqueCount = %u\n", uniqueCount );	
-	byteList->size = uniqueCount;
-
-	uint i, count = 0;
-	for (i = 0; i < size; ++i)
-	{
-		if(!isInElements( byteList->elements, count, list[i] ))
-		{
-			byteList->elements[count].data = list[i];
-			byteList->elements[count].count = 
-					countInList( list, size, list[i] );
-			++count;
-		}		
-	}
+	populateByteList( byteList, data, size );
 
 	sortByteList( byteList, size );
 
 	return byteList;
+}
+
+ByteList* initializeByteList( byte* data, uint size )
+{
+	/* Initalize ByteList */
+	uint uniqueCount = countUnique( data, size );
+	uint listSize = sizeof( ByteList ) + 
+					sizeof( ByteListElement* ) * uniqueCount;
+	ByteList * byteList = calloc( 1, listSize );
+
+	/* Initalize Elements */
+	byteList->elements = calloc( size, sizeof( ByteListElement ) );
+	byteList->size = uniqueCount;
+}
+
+void populateByteList ( ByteList* byteList, byte* data, uint size )
+{
+	uint i, count = 0;
+	for (i = 0; i < size; ++i)
+	{
+		if(!isInElements( byteList->elements, count, data[i] ))
+		{
+			byteList->elements[count].data = data[i];
+			byteList->elements[count].count = 
+					countInList( data, size, data[i] );
+			++count;
+		}		
+	}
 }
 
 /* Selection Sort */
