@@ -17,12 +17,14 @@ typedef int bool;
 #define dataSize 10
 
 typedef struct {
-	char name[MAX_NAME_SIZE];
-	uint frontEndianCardNumber;
-	uint backEndianCardNumber;
-	int month;
-	int year;
-	int cvc;
+	char first_name[MAX_NAME_SIZE];
+	char initial;
+	char last_name[MAX_NAME_SIZE];
+	long long unsigned int cardNumber;
+	unsigned int month;
+	unsigned int year;
+	unsigned int cvc;
+	unsigned int ID;
 } Card;
 
 typedef struct {
@@ -35,6 +37,14 @@ typedef struct {
 	ByteListElement *elements;
 } ByteList;
 
+typedef struct Node Node;
+
+struct Node {
+	byte *value;
+	Node *left;
+	Node *right;
+};
+
 char* encode( char*, uint );
 bool isIn( byte*, uint, byte );
 uint countInList( byte*, uint, byte );	
@@ -45,6 +55,9 @@ void sortByteList ( ByteList*, uint );
 void swapBytes ( ByteList*, uint, uint );
 void populateByteList ( ByteList*, byte*, uint );
 ByteList* initializeByteList( byte*, uint );
+Node* createHuffmanTree( ByteList* );
+void printHuffmanTree( Node* );
+void printByteList( ByteList* );
 
 int main()
 {
@@ -59,17 +72,17 @@ int main()
 	out - byte - pointer to huffman code
 */
 
-/* TODO - Convery list of card structs to byte list */
+/* TODO - Convert list of card structs to byte list */
 
 /* TODO - Decompress */
 
 byte* encode( byte *data, uint size ) 
 {
-	byte unique[size];
-	uint uniqueCount = 0;
-	uint i;
 
 	ByteList *byteList = createByteList( data, size );
+	Node *node = createHuffmanTree( byteList );
+
+	printHuffmanTree( node );
 
 	/* TODO - Create Huffman Tree */
 
@@ -79,13 +92,6 @@ byte* encode( byte *data, uint size )
 
 	/* TODO - Return Huffman Code and Compressed Data */
 
-	/* Display data */
-	printf( "ByteList Size = %u\n", byteList->size );
-	for (i = 0; i < byteList->size; ++i)
-	{
-		printf( "Data = %c\n", byteList->elements[i].data );
-		printf( "Count = %d\n", byteList->elements[i].count );
-	}
 	
 	return data;
 }
@@ -99,6 +105,45 @@ ByteList* createByteList( byte* data, uint size)
 	sortByteList( byteList, size );
 
 	return byteList;
+}
+
+Node* createHuffmanTree( ByteList* byteList )
+{
+	if (byteList == NULL)
+	{
+		return;
+	}
+	if (byteList->elements == NULL)
+	{
+		return;
+	}
+	//Make the inital node equal to the lowest frequency
+	Node *root;
+	root = malloc( sizeof( Node ) );
+	root->value = malloc( sizeof( byte ) );
+	*(root->value) = byteList->elements[byteList->size - 1].data;
+
+
+	return root;
+}
+
+void printHuffmanTree( Node *node )
+{
+	if( node->value != NULL)
+	{
+		printf( "Byte - %c\n", *(node->value) );
+		return;
+	}
+	if( node->left != NULL)
+	{
+		printf("Left\n");
+		printHuffmanTree( node->left );
+	}
+	if( node->right != NULL)
+	{
+		printf("Right\n");
+		printHuffmanTree( node->right );
+	}
 }
 
 ByteList* initializeByteList( byte* data, uint size )
@@ -204,4 +249,16 @@ uint countInList( byte* list, uint size, byte value )
 		if (list[i] == value)
 			++count;
 	return count;
+}
+
+void printByteList( ByteList *byteList )
+{
+	uint i;
+	/* Display data */
+	printf( "ByteList Size = %u\n", byteList->size );
+	for (i = 0; i < byteList->size; ++i)
+	{
+		printf( "Data = %c\n", byteList->elements[i].data );
+		printf( "Count = %d\n", byteList->elements[i].count );
+	}
 }
