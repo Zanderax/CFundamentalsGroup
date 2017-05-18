@@ -40,7 +40,7 @@ typedef struct {
 typedef struct Node Node;
 
 struct Node {
-	byte *value;
+	byte value;
 	Node *left;
 	Node *right;
 };
@@ -80,9 +80,9 @@ byte* encode( byte *data, uint size )
 {
 
 	ByteList *byteList = createByteList( data, size );
-	Node *node = createHuffmanTree( byteList );
+	/*Node *node = createHuffmanTree( byteList );*/
 
-	printHuffmanTree( node );
+	/*printHuffmanTree( node );*/
 
 	/* TODO - Create Huffman Tree */
 
@@ -109,31 +109,47 @@ ByteList* createByteList( byte* data, uint size)
 
 Node* createHuffmanTree( ByteList* byteList )
 {
-	if (byteList == NULL)
+	if (byteList == NULL || byteList->elements == NULL)
 	{
 		return;
 	}
-	if (byteList->elements == NULL)
+	// Make the inital node equal to the lowest frequency
+	// Temp list of roots, we are only going to return one root.
+	// Max number of roots = (total number of nodes)/2
+	// The + 1 prevents errors when integer truncation occurs
+	// This is an area that could optomise for memeory is needed.
+
+	Node *roots = malloc( sizeof( Node ) * ( (byteList->size) / 2 + 1 ) );
+
+	int i;
+	for (i = byteList->size - 1; i >= 0; ++i)
 	{
-		return;
-	}
-	//Make the inital node equal to the lowest frequency
-	Node *root;
-	root = malloc( sizeof( Node ) );
-	root->value = malloc( sizeof( byte ) );
-	*(root->value) = byteList->elements[byteList->size - 1].data;
+		/*TODO - Find smallest root*/
+		uint smallest = 0;
+		uint sizeOfNextRoot = smallest + byteList->elements[i].count;
+		uint sizeOfNextIndependantRoot = byteList->elements[i].count +				
+										 byteList->elements[i-1].count;
+		if( sizeOfNextRoot < sizeOfNextIndependantRoot )
+		{
+			/*TODO - Create new root as a parent of next and the current smallest root*/
+		}
+		else
+		{
+			/*TODO - Create new independant root from the next two elements*/
+			/* ++i; <- do this because you are using two elements*/
+		}
+	}	
 
-
-	return root;
+	Node* first_leaf = malloc( sizeof( Node ) );
+	first_leaf->value = 'F';
+	Node* second_leaf = malloc( sizeof( Node ) );
+	
+	return first_leaf;
 }
 
 void printHuffmanTree( Node *node )
 {
-	if( node->value != NULL)
-	{
-		printf( "Byte - %c\n", *(node->value) );
-		return;
-	}
+	printf( "Node Value - %c\n", node->value );
 	if( node->left != NULL)
 	{
 		printf("Left\n");
