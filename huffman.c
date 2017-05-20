@@ -55,13 +55,14 @@ void sortByteList ( ByteList*, uint );
 void swapBytes ( ByteList*, uint, uint );
 void populateByteList ( ByteList*, byte*, uint );
 ByteList* initializeByteList( byte*, uint );
-Node* createHuffmanTree( ByteList* );
+Node createHuffmanTree( ByteList* );
 void printHuffmanTree( Node* );
 void printByteList( ByteList* );
+uint findSmallestRoot( Node*, uint );
 
 int main()
 {
-	byte data[dataSize] = { '1', '8', '1', '6', '1', '6', '8', '8', '7', '1' };
+	byte data[dataSize] = { '1', '8', '1', '7', '1', '7', '8', '1', '7', '1' };
 	byte *returnData = encode( data, dataSize );
 	return 0;
 }
@@ -80,8 +81,18 @@ byte* encode( byte *data, uint size )
 {
 
 	ByteList *byteList = createByteList( data, size );
-	/*Node *node = createHuffmanTree( byteList );*/
+	uint i;
+	for(i=0; i<byteList->size; ++i)
+	{
+		printf("Count = %u\n", byteList->elements[i].count);
+		printf("Data = %c\n", byteList->elements[i].data);
+	}
 
+	Node node = createHuffmanTree( byteList );
+
+	printf("Value = %u\n", node.value);
+	printf("Left Value = %u\n", node.left->value);
+	printf("Right Value = %u\n", node.right->value);
 	/*printHuffmanTree( node );*/
 
 	/* TODO - Create Huffman Tree */
@@ -102,49 +113,90 @@ ByteList* createByteList( byte* data, uint size)
 
 	populateByteList( byteList, data, size );
 
-	sortByteList( byteList, size );
+	sortByteList( byteList, byteList->size );
 
 	return byteList;
 }
 
-Node* createHuffmanTree( ByteList* byteList )
+Node createHuffmanTree( ByteList* byteList )
 {
 	if (byteList == NULL || byteList->elements == NULL)
 	{
 		return;
 	}
+
+	// Set index to work in revserse so that we start with the smallest values
+
+	uint byteListIndex = (byteList->size)-1;
+
+	uint numberOfRoots = 0;
+
 	// Make the inital node equal to the lowest frequency
 	// Temp list of roots, we are only going to return one root.
 	// Max number of roots = (total number of nodes)/2
 	// The + 1 prevents errors when integer truncation occurs
-	// This is an area that could optomise for memeory is needed.
 
 	Node *roots = malloc( sizeof( Node ) * ( (byteList->size) / 2 + 1 ) );
 
-	int i;
+	//Put the first root in with the two smallest leaves as 
+
+
+	Node* first_leaf = malloc( sizeof( Node ) );
+	first_leaf->value = byteList->elements[byteListIndex].count;
+	--byteListIndex;
+	roots[0].left = first_leaf;
+
+	Node* second_leaf = malloc( sizeof( Node ) );
+	second_leaf->value = byteList->elements[byteListIndex].count;
+	--byteListIndex;
+	roots[0].right = second_leaf;
+
+	roots[0].value = roots[0].left->value + roots[0].right->value; 
+
+	numberOfRoots++;
+
+
+	uint smallestRootIndex = findSmallestRoot( roots, numberOfRoots );
+	return roots[smallestRootIndex];
+
+/*
+	uint numberOfRoots = 1;
+	uint i;
 	for (i = byteList->size - 1; i >= 0; ++i)
 	{
-		/*TODO - Find smallest root*/
-		uint smallest = 0;
+		Node* smallest = findSmallestRoot( roots, numberOfRoots );
+		TODO - Find smallest root
 		uint sizeOfNextRoot = smallest + byteList->elements[i].count;
 		uint sizeOfNextIndependantRoot = byteList->elements[i].count +				
 										 byteList->elements[i-1].count;
 		if( sizeOfNextRoot < sizeOfNextIndependantRoot )
 		{
-			/*TODO - Create new root as a parent of next and the current smallest root*/
+			TODO - Create new root as a parent of next and the current smallest root
+			
+
 		}
 		else
 		{
-			/*TODO - Create new independant root from the next two elements*/
-			/* ++i; <- do this because you are using two elements*/
+			TODO - Create new independant root from the next two elements
+			 ++i; <- do this because you are using two elements
 		}
 	}	
 
-	Node* first_leaf = malloc( sizeof( Node ) );
-	first_leaf->value = 'F';
-	Node* second_leaf = malloc( sizeof( Node ) );
 	
-	return first_leaf;
+	return first_leaf;*/
+}
+
+uint findSmallestRoot( Node* roots, uint numberOfRoots )
+{
+	uint i, smallestIndex;
+	for (i = 0; i < numberOfRoots; ++i)
+	{
+		if (roots[i].value > roots[smallestIndex].value)
+		{
+			smallestIndex = i;
+		}
+	}
+	return smallestIndex;
 }
 
 void printHuffmanTree( Node *node )
@@ -186,7 +238,7 @@ void populateByteList ( ByteList* byteList, byte* data, uint size )
 			byteList->elements[count].count = 
 					countInList( data, size, data[i] );
 			++count;
-		}		
+		}
 	}
 }
 
@@ -214,9 +266,15 @@ void sortByteList ( ByteList* list, uint size )
 
 void swapBytes ( ByteList* list, uint first, uint second )
 {
+	// Wouldn't cause a problem but saves CPU time.
+	if (first==second)
+		return;
+
+	printf("Swap I1=%u V1=%c I2=%u V2=%c\n", first, list->elements[first].data, second, list->elements[second].data);
 	ByteListElement temp = list->elements[first];
 	list->elements[first] = list->elements[second];
-	list->elements[second] = list->elements[first];
+	/*list->elements[second] = list->elements[first];*/
+	list->elements[second] = temp;
 }
 
 uint countUnique( byte* list, uint size )
