@@ -40,7 +40,8 @@ typedef struct {
 typedef struct Node Node;
 
 struct Node {
-	byte value;
+	uint data;
+	byte count;
 	Node *left;
 	Node *right;
 };
@@ -90,10 +91,7 @@ byte* encode( byte *data, uint size )
 
 	Node node = createHuffmanTree( byteList );
 
-	printf("Value = %u\n", node.value);
-	printf("Left Value = %u\n", node.left->value);
-	printf("Right Value = %u\n", node.right->value);
-	/*printHuffmanTree( node );*/
+	printHuffmanTree( &node );
 
 	/* TODO - Create Huffman Tree */
 
@@ -142,16 +140,18 @@ Node createHuffmanTree( ByteList* byteList )
 
 
 	Node* first_leaf = malloc( sizeof( Node ) );
-	first_leaf->value = byteList->elements[byteListIndex].count;
+	first_leaf->count = byteList->elements[byteListIndex].count;
+	first_leaf->data = byteList->elements[byteListIndex].data;
 	--byteListIndex;
 	roots[0].left = first_leaf;
 
 	Node* second_leaf = malloc( sizeof( Node ) );
-	second_leaf->value = byteList->elements[byteListIndex].count;
+	second_leaf->count = byteList->elements[byteListIndex].count;
+	second_leaf->data = byteList->elements[byteListIndex].data;
 	--byteListIndex;
 	roots[0].right = second_leaf;
 
-	roots[0].value = roots[0].left->value + roots[0].right->value; 
+	roots[0].count = roots[0].left->count + roots[0].right->count; 
 
 	numberOfRoots++;
 
@@ -191,7 +191,7 @@ uint findSmallestRoot( Node* roots, uint numberOfRoots )
 	uint i, smallestIndex;
 	for (i = 0; i < numberOfRoots; ++i)
 	{
-		if (roots[i].value > roots[smallestIndex].value)
+		if (roots[i].count > roots[smallestIndex].count)
 		{
 			smallestIndex = i;
 		}
@@ -201,7 +201,8 @@ uint findSmallestRoot( Node* roots, uint numberOfRoots )
 
 void printHuffmanTree( Node *node )
 {
-	printf( "Node Value - %c\n", node->value );
+	printf( "Node Count - %u\n", node->count );
+	printf( "Node Data - %c\n", node->data );
 	if( node->left != NULL)
 	{
 		printf("Left\n");
