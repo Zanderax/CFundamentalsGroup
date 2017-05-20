@@ -60,6 +60,8 @@ Node createHuffmanTree( ByteList* );
 void printHuffmanTree( Node* );
 void printByteList( ByteList* );
 uint findSmallestRoot( Node*, uint );
+void addRoot( Node*, uint, Node*, Node* );
+void removeRoot( Node*, uint, uint );
 
 int main()
 {
@@ -138,39 +140,32 @@ Node createHuffmanTree( ByteList* byteList )
 
 	//Put the first root in with the two smallest leaves as 
 
-
 	Node* first_leaf = malloc( sizeof( Node ) );
 	first_leaf->count = byteList->elements[byteListIndex].count;
 	first_leaf->data = byteList->elements[byteListIndex].data;
 	--byteListIndex;
-	roots[0].left = first_leaf;
 
 	Node* second_leaf = malloc( sizeof( Node ) );
 	second_leaf->count = byteList->elements[byteListIndex].count;
 	second_leaf->data = byteList->elements[byteListIndex].data;
 	--byteListIndex;
-	roots[0].right = second_leaf;
 
-	roots[0].count = roots[0].left->count + roots[0].right->count; 
+
+	addRoot( roots, numberOfRoots, first_leaf, second_leaf );
 
 	numberOfRoots++;
-
-
-	uint smallestRootIndex = findSmallestRoot( roots, numberOfRoots );
-	return roots[smallestRootIndex];
-
 /*
-	uint numberOfRoots = 1;
 	uint i;
-	for (i = byteList->size - 1; i >= 0; ++i)
+	for (i = byteList->size - 3 ; i >= 0; ++i)
 	{
-		Node* smallest = findSmallestRoot( roots, numberOfRoots );
-		TODO - Find smallest root
+		uint smallestRootIndex = findSmallestRoot( roots, numberOfRoots );
+
 		uint sizeOfNextRoot = smallest + byteList->elements[i].count;
 		uint sizeOfNextIndependantRoot = byteList->elements[i].count +				
 										 byteList->elements[i-1].count;
 		if( sizeOfNextRoot < sizeOfNextIndependantRoot )
 		{
+			
 			TODO - Create new root as a parent of next and the current smallest root
 			
 
@@ -182,8 +177,24 @@ Node createHuffmanTree( ByteList* byteList )
 		}
 	}	
 
-	
-	return first_leaf;*/
+	*/
+	return roots[0];
+}
+
+void addRoot( Node* roots, uint index, Node* left, Node* right)
+{
+	roots[index].right = right;
+	roots[index].left = left;
+	roots[index].count = roots[index].left->count + roots[index].right->count; 
+}
+
+void removeRoot( Node* roots, uint size, uint index)
+{
+	uint i;
+	for (i = index; i < size-1; ++i)
+	{
+		roots[i] = roots[i+1];
+	}
 }
 
 uint findSmallestRoot( Node* roots, uint numberOfRoots )
