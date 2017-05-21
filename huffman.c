@@ -1,71 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
-#define MAX_NAME_SIZE 50
-
-typedef unsigned int uint;
-
-typedef char byte;
-
-typedef int bool;
-
-#define TRUE 1
-#define FALSE 0
-
-#define dataSize 40
-
-typedef struct {
-	char first_name[MAX_NAME_SIZE];
-	char initial;
-	char last_name[MAX_NAME_SIZE];
-	long long unsigned int cardNumber;
-	unsigned int month;
-	unsigned int year;
-	unsigned int cvc;
-	unsigned int ID;
-} Card;
-
-typedef struct {
-	byte data;
-	uint count;
-} ByteListElement;
-
-typedef struct {
-	uint size;
-	ByteListElement *elements;
-} ByteList;
-
-typedef struct Node Node;
-
-struct Node {
-	uint data;
-	byte count;
-	Node *left;
-	Node *right;
-};
-
-char* encode( char*, uint );
-bool isIn( byte*, uint, byte );
-uint countInList( byte*, uint, byte );	
-ByteList* createByteList( byte*, uint );
-bool isInElements( ByteListElement*, uint, byte );
-uint countUnique( byte*, uint );
-void sortByteList ( ByteList*, uint );
-void swapBytes ( ByteList*, uint, uint );
-void populateByteList ( ByteList*, byte*, uint );
-ByteList* initializeByteList( byte*, uint );
-Node* createHuffmanTree( ByteList* );
-void printHuffmanTree( Node* );
-void printByteList( ByteList* );
-uint findSmallestRoot( Node**, uint );
-uint findSecondSmallestRoot( Node**, uint );
-void addRoot( Node**, uint, Node*, Node* );
-void removeRoot( Node**, uint, uint );
-void combineRoots( Node**, uint, uint, uint );
-Node* makeLeaf( ByteListElement* );
-uint countRoots( Node**, uint );
+#include "huffman.h"
 
 int main()
 {
@@ -100,7 +33,7 @@ byte* encode( byte *data, uint size )
 
 	printHuffmanTree( node );
 
-	/* TODO - Create Huffman Code */
+	byte* code = createHuffmanCode( node );
 
 	/* TODO - Compress Data With Huffman Code */
 
@@ -237,6 +170,7 @@ uint findSecondSmallestRoot( Node** roots, uint numberOfRoots )
 	return secondSmallestIndex;
 }
 
+
 void printHuffmanTree( Node *node )
 {
 	printf( "Node Count - %u\n", node->count );
@@ -253,6 +187,7 @@ void printHuffmanTree( Node *node )
 	}
 }
 
+
 ByteList* initializeByteList( byte* data, uint size )
 {
 	/* Initalize ByteList */
@@ -265,6 +200,7 @@ ByteList* initializeByteList( byte* data, uint size )
 	byteList->elements = calloc( size, sizeof( ByteListElement ) );
 	byteList->size = uniqueCount;
 }
+
 
 void populateByteList ( ByteList* byteList, byte* data, uint size )
 {
@@ -280,6 +216,7 @@ void populateByteList ( ByteList* byteList, byte* data, uint size )
 		}
 	}
 }
+
 
 /* Selection Sort */
 void sortByteList ( ByteList* list, uint size )
@@ -303,6 +240,7 @@ void sortByteList ( ByteList* list, uint size )
 	}	
 }
 
+
 void swapBytes ( ByteList* list, uint first, uint second )
 {
 	// Wouldn't cause a problem but saves CPU time.
@@ -313,6 +251,7 @@ void swapBytes ( ByteList* list, uint first, uint second )
 	list->elements[first] = list->elements[second];
 	list->elements[second] = temp;
 }
+
 
 uint countUnique( byte* list, uint size )
 {
@@ -330,7 +269,6 @@ uint countUnique( byte* list, uint size )
 }
 
 
-
 //Checks if byte is in a list
 bool isIn( byte* list, uint size, byte value )
 {
@@ -342,6 +280,7 @@ bool isIn( byte* list, uint size, byte value )
 	return FALSE;
 }
 
+
 //Checks if byte is in a list of ByteListElements
 bool isInElements( ByteListElement* list, uint size, byte value )
 {
@@ -351,6 +290,7 @@ bool isInElements( ByteListElement* list, uint size, byte value )
 			return TRUE;
 	return FALSE;
 }
+
 
 //counts the number of unique elements in a byte list
 uint countInList( byte* list, uint size, byte value )
@@ -362,14 +302,4 @@ uint countInList( byte* list, uint size, byte value )
 	return count;
 }
 
-void printByteList( ByteList *byteList )
-{
-	uint i;
-	/* Display data */
-	printf( "ByteList Size = %u\n", byteList->size );
-	for (i = 0; i < byteList->size; ++i)
-	{
-		printf( "Data = %c\n", byteList->elements[i].data );
-		printf( "Count = %d\n", byteList->elements[i].count );
-	}
-}
+
