@@ -56,16 +56,23 @@ void sortByteList ( ByteList*, uint );
 void swapBytes ( ByteList*, uint, uint );
 void populateByteList ( ByteList*, byte*, uint );
 ByteList* initializeByteList( byte*, uint );
-Node createHuffmanTree( ByteList* );
+Node* createHuffmanTree( ByteList* );
 void printHuffmanTree( Node* );
 void printByteList( ByteList* );
-uint findSmallestRoot( Node*, uint );
-void addRoot( Node*, uint, Node*, Node* );
-void removeRoot( Node*, uint, uint );
+uint findSmallestRoot( Node**, uint );
+uint findSecondSmallestRoot( Node**, uint );
+void addRoot( Node**, uint, Node*, Node* );
+void removeRoot( Node**, uint, uint );
+void combineRoots( Node**, uint, uint, uint );
+Node* makeLeaf( ByteListElement* );
+uint countRoots( Node**, uint );
 
 int main()
 {
-	byte data[dataSize] = { '1', '8', '1', '7', '1', '7', '8', '1', '7', '1' };
+	byte data[dataSize] = 
+	{ 
+		'2', '8', '1', '7', '1', '7', '8', '1', '7', '1'
+	};
 	byte *returnData = encode( data, dataSize );
 	return 0;
 }
@@ -91,11 +98,9 @@ byte* encode( byte *data, uint size )
 		printf("Data = %c\n", byteList->elements[i].data);
 	}
 
-	Node node = createHuffmanTree( byteList );
+	Node* node = createHuffmanTree( byteList );
 
-	printHuffmanTree( &node );
-
-	/* TODO - Create Huffman Tree */
+	printHuffmanTree( node );
 
 	/* TODO - Create Huffman Code */
 
@@ -118,7 +123,7 @@ ByteList* createByteList( byte* data, uint size)
 	return byteList;
 }
 
-Node createHuffmanTree( ByteList* byteList )
+Node* createHuffmanTree( ByteList* byteList )
 {
 	if (byteList == NULL || byteList->elements == NULL)
 	{
@@ -129,34 +134,34 @@ Node createHuffmanTree( ByteList* byteList )
 
 	uint byteListIndex = (byteList->size)-1;
 
-	uint numberOfRoots = 0;
-
 	// Make the inital node equal to the lowest frequency
 	// Temp list of roots, we are only going to return one root.
 	// Max number of roots = (total number of nodes)/2
 	// The + 1 prevents errors when integer truncation occurs
 
-	Node *roots = malloc( sizeof( Node ) * ( (byteList->size) / 2 + 1 ) );
+	Node **roots = malloc( sizeof( Node* ) *  (byteList->size)  );
 
-	//Put the first root in with the two smallest leaves as 
+	uint i;
+	for( i = 0; i < byteList->size; ++i )
+	{
+		
+		roots[i] = makeLeaf( &byteList->elements[i] );
+	}
 
-	Node* first_leaf = malloc( sizeof( Node ) );
-	first_leaf->count = byteList->elements[byteListIndex].count;
-	first_leaf->data = byteList->elements[byteListIndex].data;
-	--byteListIndex;
-
-	Node* second_leaf = malloc( sizeof( Node ) );
-	second_leaf->count = byteList->elements[byteListIndex].count;
-	second_leaf->data = byteList->elements[byteListIndex].data;
-	--byteListIndex;
-
-
-	addRoot( roots, numberOfRoots, first_leaf, second_leaf );
-
-	numberOfRoots++;
+	uint numberOfRoots = countRoots( roots, byteList->size );
+	while (numberOfRoots > 1)
+	{
+		printf("NumberOfRoots = %u\n", numberOfRoots);
+		uint smallest = findSmallestRoot( roots, numberOfRoots );
+		uint secondSmallest = findSecondSmallestRoot( roots, numberOfRoots );
+		printf("Smallest=%u SecondSmallest=%u\n", smallest, secondSmallest);
+		combineRoots( roots, byteList->size, smallest, secondSmallest );
+		numberOfRoots--;
+	}
+	
 /*
 	uint i;
-	for (i = byteList->size - 3 ; i >= 0; ++i)
+	for (i = byteList->size - 2 ; i >= 0; ++i)
 	{
 		uint smallestRootIndex = findSmallestRoot( roots, numberOfRoots );
 
@@ -176,20 +181,37 @@ Node createHuffmanTree( ByteList* byteList )
 			 ++i; <- do this because you are using two elements
 		}
 	}	
-
-	*/
+*/
 	return roots[0];
 }
 
-void addRoot( Node* roots, uint index, Node* left, Node* right)
+uint countRoots( Node** roots, uint size )
 {
-	roots[index].right = right;
-	roots[index].left = left;
-	roots[index].count = roots[index].left->count + roots[index].right->count; 
+	uint count = 0;
+	while( count < size && roots[count++] != NULL );
+	return count;
 }
 
-void removeRoot( Node* roots, uint size, uint index)
+Node* makeLeaf( ByteListElement* element )
 {
+	Node *leaf = malloc( sizeof( Node ) );
+	leaf->count = element->count;
+	leaf->data = element->data;
+	return leaf;
+}
+
+void addRoot( Node** roots, uint index, Node* left, Node* right )
+{
+	Node *newRoot = malloc( sizeof( Node ) );
+	newRoot->right = right;
+	newRoot->left = left;
+	newRoot->count = left->count + right->count;
+	roots[index] = newRoot;
+}
+
+void removeRoot( Node** roots, uint size, uint index)
+{
+	roots[index] = NULL;
 	uint i;
 	for (i = index; i < size-1; ++i)
 	{
@@ -197,17 +219,59 @@ void removeRoot( Node* roots, uint size, uint index)
 	}
 }
 
-uint findSmallestRoot( Node* roots, uint numberOfRoots )
+void combineRoots( Node** roots, uint size, uint firstIndex, uint secondIndex )
 {
-	uint i, smallestIndex;
-	for (i = 0; i < numberOfRoots; ++i)
+	printf("Combine %u and %u\n", firstIndex, secondIndex);
+	if (firstIndex < secondIndex)
 	{
-		if (roots[i].count > roots[smallestIndex].count)
+		addRoot( roots, firstIndex, roots[firstIndex], roots[secondIndex] );
+		removeRoot( roots, size, secondIndex );
+	}
+	else
+	{
+		addRoot( roots, secondIndex, roots[secondIndex], roots[firstIndex] );
+		removeRoot( roots, size, firstIndex );
+	}
+}
+
+uint findSmallestRoot( Node** roots, uint numberOfRoots )
+{
+	uint i, smallestIndex = 0;
+	for (i = 1; i < numberOfRoots; ++i)
+	{
+		if (roots[i]->count < roots[smallestIndex]->count)
 		{
 			smallestIndex = i;
 		}
 	}
 	return smallestIndex;
+}
+
+uint findSecondSmallestRoot( Node** roots, uint numberOfRoots )
+{
+	if(numberOfRoots < 2)
+		return;
+
+	uint i, smallestIndex = 0, secondSmallestIndex = 1;
+	if( roots[smallestIndex] > roots[secondSmallestIndex])
+	{
+		smallestIndex = 1;
+		secondSmallestIndex = 0;
+	}
+
+	for (i = 2; i < numberOfRoots; ++i)
+	{
+		if (roots[i]->count < roots[smallestIndex]->count)
+		{
+			secondSmallestIndex = smallestIndex;
+			smallestIndex = i;
+		}
+		else if (roots[i]->count < roots[secondSmallestIndex]->count)
+		{
+			secondSmallestIndex = i;
+		}
+	}
+	return secondSmallestIndex;
 }
 
 void printHuffmanTree( Node *node )
