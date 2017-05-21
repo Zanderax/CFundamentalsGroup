@@ -14,7 +14,7 @@ typedef int bool;
 #define TRUE 1
 #define FALSE 0
 
-#define dataSize 10
+#define dataSize 40
 
 typedef struct {
 	char first_name[MAX_NAME_SIZE];
@@ -71,7 +71,10 @@ int main()
 {
 	byte data[dataSize] = 
 	{ 
-		'2', '8', '1', '7', '1', '7', '8', '1', '7', '1'
+		'I', ' ', 'a', 'm', ' ', 'a', ' ', 'm', 'a', 's',
+		't', 'e', 'r', ' ', 'a', 't', ' ', 't', 'y', 'p',
+		'i', 'n', 'g', ' ', 'i', 'n', ' ', 'a', ' ', 'c',
+		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
 	byte *returnData = encode( data, dataSize );
 	return 0;
@@ -92,11 +95,6 @@ byte* encode( byte *data, uint size )
 
 	ByteList *byteList = createByteList( data, size );
 	uint i;
-	for(i=0; i<byteList->size; ++i)
-	{
-		printf("Count = %u\n", byteList->elements[i].count);
-		printf("Data = %c\n", byteList->elements[i].data);
-	}
 
 	Node* node = createHuffmanTree( byteList );
 
@@ -130,15 +128,6 @@ Node* createHuffmanTree( ByteList* byteList )
 		return;
 	}
 
-	// Set index to work in revserse so that we start with the smallest values
-
-	uint byteListIndex = (byteList->size)-1;
-
-	// Make the inital node equal to the lowest frequency
-	// Temp list of roots, we are only going to return one root.
-	// Max number of roots = (total number of nodes)/2
-	// The + 1 prevents errors when integer truncation occurs
-
 	Node **roots = malloc( sizeof( Node* ) *  (byteList->size)  );
 
 	uint i;
@@ -151,37 +140,12 @@ Node* createHuffmanTree( ByteList* byteList )
 	uint numberOfRoots = countRoots( roots, byteList->size );
 	while (numberOfRoots > 1)
 	{
-		printf("NumberOfRoots = %u\n", numberOfRoots);
 		uint smallest = findSmallestRoot( roots, numberOfRoots );
 		uint secondSmallest = findSecondSmallestRoot( roots, numberOfRoots );
-		printf("Smallest=%u SecondSmallest=%u\n", smallest, secondSmallest);
 		combineRoots( roots, byteList->size, smallest, secondSmallest );
 		numberOfRoots--;
 	}
 	
-/*
-	uint i;
-	for (i = byteList->size - 2 ; i >= 0; ++i)
-	{
-		uint smallestRootIndex = findSmallestRoot( roots, numberOfRoots );
-
-		uint sizeOfNextRoot = smallest + byteList->elements[i].count;
-		uint sizeOfNextIndependantRoot = byteList->elements[i].count +				
-										 byteList->elements[i-1].count;
-		if( sizeOfNextRoot < sizeOfNextIndependantRoot )
-		{
-			
-			TODO - Create new root as a parent of next and the current smallest root
-			
-
-		}
-		else
-		{
-			TODO - Create new independant root from the next two elements
-			 ++i; <- do this because you are using two elements
-		}
-	}	
-*/
 	return roots[0];
 }
 
@@ -221,7 +185,6 @@ void removeRoot( Node** roots, uint size, uint index)
 
 void combineRoots( Node** roots, uint size, uint firstIndex, uint secondIndex )
 {
-	printf("Combine %u and %u\n", firstIndex, secondIndex);
 	if (firstIndex < secondIndex)
 	{
 		addRoot( roots, firstIndex, roots[firstIndex], roots[secondIndex] );
@@ -346,10 +309,8 @@ void swapBytes ( ByteList* list, uint first, uint second )
 	if (first==second)
 		return;
 
-	printf("Swap I1=%u V1=%c I2=%u V2=%c\n", first, list->elements[first].data, second, list->elements[second].data);
 	ByteListElement temp = list->elements[first];
 	list->elements[first] = list->elements[second];
-	/*list->elements[second] = list->elements[first];*/
 	list->elements[second] = temp;
 }
 
