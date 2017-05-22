@@ -37,3 +37,6 @@ core
 
 # Swap Files
 *.sw*
+
+# Key Files
+*.key
