@@ -9,7 +9,7 @@ int main()
 		'i', 'n', 'g', ' ', 'i', 'n', ' ', 'a', ' ', 'c',
 		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
-	byte *returnData = encode( data, dataSize );
+	byte *returnData = compress( data, dataSize );
 	return 0;
 }
 /*
@@ -23,7 +23,7 @@ int main()
 
 /* TODO - Decompress */
 
-byte* encode( byte *data, uint size ) 
+byte* compress( byte *data, uint size ) 
 {
 
 	ByteList *byteList = createByteList( data, size );

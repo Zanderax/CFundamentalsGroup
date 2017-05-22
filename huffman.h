@@ -10,6 +10,6 @@
 #include "huffmanTree.h"
 #include "huffmanCode.h"
 
-byte* encode( byte*, uint );
+byte* compress( byte*, uint );
 
 #endif /* HUFFMAN */
