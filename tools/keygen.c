@@ -17,7 +17,7 @@ void generateKey( void )
 	{
 		printf( "Error creating key file." );
 	}
-	char key = 'd';
+	char key = 'a';
 	fwrite( &key, sizeof( char ), 1, fp );
 	fclose( fp );
 }
