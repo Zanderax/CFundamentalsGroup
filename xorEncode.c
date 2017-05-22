@@ -5,7 +5,7 @@ void encode( byte* data, uint size )
 	byte* key = loadKey();
 	if (key == NULL)
 	{
-		printf( "Could not load key file." );
+		printf( "Could not load key file.\n" );
 		return;
 	}
 

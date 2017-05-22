@@ -15,7 +15,7 @@ void generateKey( void )
 	FILE *fp = fopen( "../xor.key", "w" );
 	if ( fp == NULL )
 	{
-		printf( "Error creating key file." );
+		printf( "Error creating key file.\n" );
 		return;
 	}
 	char key = 'a';

@@ -11,5 +11,6 @@
 #include "huffmanCode.h"
 
 byte* compress( byte*, uint );
+void showOffEncoding( byte*, uint );
 
 #endif /* HUFFMAN */
