@@ -1,11 +1,37 @@
 #include "xorEncode.h"
 
-byte loadKey()
+void encode( byte* data, uint size )
 {
-	
+	byte* key = loadKey();
+	if (key == NULL)
+	{
+		printf( "Could not load key file." );
+		return;
+	}
+
+	uint i;
+	for( i = 0; i < size; ++i)
+	{
+		data[i] = data[i] ^ *key;
+	}
+	free( key );
 }
 
-byte* encode( byte* data, byte key )
+void decode( byte* data, uint size )
 {
-	
+	encode( data, size );
 }
+
+byte* loadKey()
+{
+	FILE *fp = fopen( "xor.key", "r" );
+	if (fp == NULL)
+	{
+		return NULL;	
+	}
+
+	byte* key = malloc( sizeof( byte ) );
+	*key = (byte)fgetc( fp );
+	return key;
+}
+

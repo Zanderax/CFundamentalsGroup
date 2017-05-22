@@ -7,8 +7,8 @@
 #include <math.h>
 #include "dataTypes.h"
 
-byte loadKey();
-
-byte* encode( byte*, byte);
+void encode( byte*, uint );
+void decode( byte*, uint );
+byte* loadKey();
 
 #endif /* XOR_ENCODE */
