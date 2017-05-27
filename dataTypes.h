@@ -13,7 +13,8 @@ typedef int bool;
 
 #define dataSize 40
 
-typedef struct {
+typedef struct 
+{
 	char first_name[MAX_NAME_SIZE];
 	char initial;
 	char last_name[MAX_NAME_SIZE];
@@ -26,19 +27,30 @@ typedef struct {
 
 typedef struct Node Node;
 
-struct Node {
+struct Node 
+{
 	uint data;
 	byte count;
 	Node *left;
 	Node *right;
 };
 
-typedef struct {
+typedef struct Code
+{
+	uint nodeCount;
+	uint bytesForCode;
+	byte* data;
+} Code;
+
+
+typedef struct 
+{
 	byte data;
 	uint count;
 } ByteListElement;
 
-typedef struct {
+typedef struct 
+{
 	uint size;
 	ByteListElement *elements;
 } ByteList;

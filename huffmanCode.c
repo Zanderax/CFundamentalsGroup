@@ -1,13 +1,11 @@
 #include "huffmanCode.h"
 
-byte* createHuffmanCode( Node *node )
+Code* createHuffmanCode( Node *node )
 {
 	/* Find how long the code will be so we can allocate enough memory. 	  */
 	/* Memory needed is 1 byte for the ascii and x bytes for the code 		  */
 	/* Where x is equal to the ceiling function of maxDepth / 8				  */
 	uint maxDepth = findTreeDepth( node );
-
-	uint leafs = countLeafs( node );
 
 	uint maxCodeLength = maxDepth / 8;
 
@@ -16,13 +14,21 @@ byte* createHuffmanCode( Node *node )
 		maxCodeLength++;
 	}
 
-	/* Memory for each leaf, 1 byte each for ascii and x bytes for code		  */
-	int memorySize = ( sizeof( byte ) * ( 1 + maxCodeLength ) ) * ( leafs );
+	Code *code = malloc( sizeof( Code ) );
+	code->nodeCount = countLeafs( node );
+	code->bytesForCode = maxCodeLength + 1;
+	uint size = sizeof( byte ) * ( code->bytesForCode ) * ( code->nodeCount ); 
+	code->data = malloc( size );
 
-	byte *code = malloc( memorySize );
+	populateHuffmanCode( code, node );
 
 	return code;
 }
+
+void populateHuffmanCode( Code* code, Node* node )
+{
+	/* TODO */
+}	
 
 void setBit( byte *data, int bit, int value )
 {

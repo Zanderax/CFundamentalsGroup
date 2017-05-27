@@ -7,9 +7,11 @@
 #include <math.h>
 #include "dataTypes.h"
 
-byte* createHuffmanCode( Node* ); 
+Code* createHuffmanCode( Node* ); 
+void populateHuffmanCode( Code*, Node* );
 void setBit( byte*, int, int );
 uint findTreeDepth( Node* );
 uint countLeafs( Node* );
+void getLeafNodes( Node*, Node**, uint );
 
 #endif /* HUFFMAN_CODE*/
