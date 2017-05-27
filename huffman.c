@@ -10,9 +10,10 @@ int main()
 		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
 
-	/*byte *returnData = compress( data, dataSize );*/
+	byte *returnData = compress( data, dataSize );
 
-	showOffEncoding( data, dataSize );
+	
+	/*showOffEncoding( data, dataSize );*/
 
 	return 0;
 }
@@ -65,7 +66,7 @@ byte* compress( byte *data, uint size )
 
 	Node* node = createHuffmanTree( byteList );
 
-	printHuffmanTree( node );
+	/*printHuffmanTree( node );*/
 
 	byte* code = createHuffmanCode( node );
 

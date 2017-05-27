@@ -7,6 +7,7 @@
 #include <math.h>
 #include "dataTypes.h"
 
-byte* createHuffmanCode( Node* );
+byte* createHuffmanCode( Node* ); 
+void setBit( byte*, int, int );
 
 #endif /* HUFFMAN_CODE*/
