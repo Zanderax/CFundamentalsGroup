@@ -66,7 +66,7 @@ byte* compress( byte *data, uint size )
 
 	Node* node = createHuffmanTree( byteList );
 
-	/*printHuffmanTree( node );*/
+	/* printHuffmanTree( node ); */
 
 	byte* code = createHuffmanCode( node );
 

@@ -9,5 +9,7 @@
 
 byte* createHuffmanCode( Node* ); 
 void setBit( byte*, int, int );
+uint findTreeDepth( Node* );
+uint countLeafs( Node* );
 
 #endif /* HUFFMAN_CODE*/
