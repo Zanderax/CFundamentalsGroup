@@ -66,9 +66,11 @@ byte* compress( byte *data, uint size )
 
 	Node* node = createHuffmanTree( byteList );
 
-	/* printHuffmanTree( node ); */
+	 printHuffmanTree( node ); 
 
-	byte* code = createHuffmanCode( node );
+	Code* code = createHuffmanCode( node );
+
+	showOffCode( code );
 
 	/* TODO - Compress Data With Huffman Code */
 
@@ -76,5 +78,21 @@ byte* compress( byte *data, uint size )
 
 	
 	return data;
+}
+
+void showOffCode( Code *code )
+{
+	uint i, j;
+	for( i = 0; i < code->elementsCount; ++i )
+	{
+		printf( "Node = %u\n", i );
+		printf( "Data = %d\n", code->elements[i].data );
+		printf( "Path = " );
+		for( j = 0; j < code->bytesForPath; ++j )
+		{
+			printf( "%d-", code->elements[i].path[j]);
+		}
+		printf( "\n" );
+	}
 }
 

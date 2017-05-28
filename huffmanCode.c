@@ -15,10 +15,14 @@ Code* createHuffmanCode( Node *node )
 	}
 
 	Code *code = malloc( sizeof( Code ) );
-	code->nodeCount = countLeafs( node );
-	code->bytesForCode = maxCodeLength + 1;
-	uint size = sizeof( byte ) * ( code->bytesForCode ) * ( code->nodeCount ); 
-	code->data = malloc( size );
+	code->elementsCount = countLeafs( node );
+	code->bytesForPath = maxCodeLength + 1;
+	code->elements = malloc( sizeof( CodeElement ) );
+	uint i;
+	for( i = 0; i < code->elementsCount; ++i )
+	{
+		code->elements[i].path = malloc( sizeof( byte ) * code->bytesForPath );
+	}
 
 	populateHuffmanCode( code, node );
 
@@ -27,8 +31,45 @@ Code* createHuffmanCode( Node *node )
 
 void populateHuffmanCode( Code* code, Node* node )
 {
-	/* TODO */
-}	
+	byte* path = malloc( sizeof( byte ) * ( code->bytesForPath ) );
+	uint currentNode = 0;
+	nodeToCode( code, node, 0, path, &currentNode );
+}
+
+void nodeToCode( Code* code, Node* node, 
+				 uint currentDepth, byte* path, uint* currentNode )
+{
+	if ( node->left == NULL && node->right == NULL )
+	{
+		setCode( code, node, path, *currentNode );
+		*currentNode++;
+		return;
+	}
+
+	uint currentPathSize = currentDepth / 8;
+
+	if( node->left != NULL ) 
+	{
+		setBit( &path[currentPathSize], currentDepth % 8 , 0);
+		nodeToCode( code, node->left, currentDepth + 1, path, currentNode );
+	}
+
+	if( node->right != NULL ) 
+	{
+		setBit( &path[currentPathSize], currentDepth % 8 , 1);
+		nodeToCode( code, node->right, currentDepth + 1, path, currentNode );
+	}
+}
+
+void setCode( Code* code, Node* node, byte* path, uint currentNode )
+{
+	code->elements[currentNode].data = node->data;
+	uint i;
+	for( i = 0; i < code->bytesForPath; ++i )
+	{
+		code->elements[currentNode].path = path;
+	}
+}
 
 void setBit( byte *data, int bit, int value )
 {

@@ -29,17 +29,23 @@ typedef struct Node Node;
 
 struct Node 
 {
-	uint data;
-	byte count;
+	byte data;
+	uint count;
 	Node *left;
 	Node *right;
 };
 
+typedef struct CodeElement
+{
+	byte data;
+	byte* path;
+} CodeElement;
+
 typedef struct Code
 {
-	uint nodeCount;
-	uint bytesForCode;
-	byte* data;
+	uint elementsCount;
+	uint bytesForPath;
+	CodeElement *elements;
 } Code;
 
 
