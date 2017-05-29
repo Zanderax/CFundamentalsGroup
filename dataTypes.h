@@ -39,6 +39,7 @@ typedef struct CodeElement
 {
 	byte data;
 	byte* path;
+	uint pathLength;
 } CodeElement;
 
 typedef struct Code

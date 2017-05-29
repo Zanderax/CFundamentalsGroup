@@ -14,6 +14,6 @@ uint findTreeDepth( Node* );
 uint countLeafs( Node* );
 void nodeToCode( Code*, Node*, uint, byte*, uint* );
 void getLeafNodes( Node*, Node**, uint );
-void setCode( Code* code, Node* node, byte* path, uint currentNode );
+void setCode( Code*, Node*, byte*, uint, uint );
 
 #endif /* HUFFMAN_CODE*/

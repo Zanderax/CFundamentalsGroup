@@ -19,7 +19,7 @@ LDFLAGS += $(foreach library,$(program_LIBRARIES),-L$(library))
 all: $(program_NAME)
 
 $(program_NAME): $(program_OBJS)
-	$(LINK.cc) $(program_OBJS) -o $(program_NAME)
+	gcc -g $(program_OBJS) -o $(program_NAME)
 
 all: $(SUBDIRS)
 

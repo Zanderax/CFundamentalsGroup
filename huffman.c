@@ -82,15 +82,16 @@ byte* compress( byte *data, uint size )
 
 void showOffCode( Code *code )
 {
+	/*printf( "BytesForPath = %u\n", code->bytesForPath );*/
 	uint i, j;
 	for( i = 0; i < code->elementsCount; ++i )
 	{
 		printf( "Node = %u\n", i );
-		printf( "Data = %d\n", code->elements[i].data );
+		printf( "Data = %c\n", code->elements[i].data );
 		printf( "Path = " );
 		for( j = 0; j < code->bytesForPath; ++j )
 		{
-			printf( "%d-", code->elements[i].path[j]);
+			printf( "%d ", code->elements[i].path[j]);
 		}
 		printf( "\n" );
 	}
