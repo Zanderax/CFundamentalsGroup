@@ -66,7 +66,7 @@ byte* compress( byte *data, uint size )
 
 	Node* node = createHuffmanTree( byteList );
 
-	 printHuffmanTree( node ); 
+	/*printHuffmanTree( node ); */
 
 	Code* code = createHuffmanCode( node );
 
@@ -88,12 +88,31 @@ void showOffCode( Code *code )
 	{
 		printf( "Node = %u\n", i );
 		printf( "Data = %c\n", code->elements[i].data );
+		printf( "PathLength = %u\n", code->elements[i].pathLength );
 		printf( "Path = " );
 		for( j = 0; j < code->bytesForPath; ++j )
 		{
-			printf( "%d ", code->elements[i].path[j]);
+			printDecToBin( code->elements[i].path[j]);
+			printf( " ");
 		}
 		printf( "\n" );
 	}
 }
 
+void printDecToBin( int dec )
+{
+	int bin = 128;
+	while(bin)
+	{
+		if((dec - bin) >= 0)
+		{
+			dec -= bin;
+			printf("1");
+		}
+		else
+		{
+			printf("0");
+		}
+		bin /= 2;
+	}
+}

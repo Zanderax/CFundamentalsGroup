@@ -13,5 +13,6 @@
 byte* compress( byte*, uint );
 void showOffEncoding( byte*, uint );
 void showOffCode( Code* );
+void printDecToBin( int );
 
 #endif /* HUFFMAN */

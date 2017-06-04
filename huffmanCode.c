@@ -14,13 +14,14 @@ Code* createHuffmanCode( Node *node )
 		maxCodeLength++;
 	}
 
-	Code *code = malloc( sizeof( Code ) );
+	Code *code = calloc(1, sizeof( Code ) );
 	code->elementsCount = countLeafs( node );
-	code->bytesForPath = maxCodeLength+1;
-	code->elements = malloc( sizeof( CodeElement ) );
+	code->bytesForPath = maxCodeLength;
+	code->elements = calloc( code->elementsCount, sizeof( CodeElement ) );
 	uint i;
 	for( i = 0; i < code->elementsCount; ++i )
 	{
+		code->elements[i].path = calloc( code->bytesForPath, sizeof( byte ) );
 	}
 
 	populateHuffmanCode( code, node );
@@ -30,78 +31,49 @@ Code* createHuffmanCode( Node *node )
 
 void populateHuffmanCode( Code* code, Node* node )
 {
-	byte* path = malloc( sizeof( byte ) * ( code->bytesForPath ) );
-	printf("Code path 00-%u\n", path[0] );
-	path[0] = 100;
-	printf("Code path 00-%u\n", path[0] );
-	printf("Code path 11-%u\n", path[1] );
-	path[1] = 101;
-	printf("Code path 11-%u\n", path[1] );
-	uint i;
+	byte* path = calloc( code->bytesForPath, sizeof( byte ) );
+	uint i, j;
 	for( i = 0; i < code->bytesForPath; ++i)
 	{
 		path[i] = 0;
 	}
 	uint currentNode = 0;
 	nodeToCode( code, node, 0, path, &currentNode );
-	printf("code bytesForPath = %u\n", code->bytesForPath);
 }
 
 void nodeToCode( Code* code, Node* node, 
 				 uint currentDepth, byte* path, uint* currentNode )
 {
-	uint currentPathOffset = *currentNode * code->bytesForPath;
-	printf("Code node-%u\n", *currentNode );
-	printf("Code bytesForPath-%u\n", code->bytesForPath );
-	printf("Code currentPathOffset-%u\n", currentPathOffset );
-	printf("Code path-%u\n", *path );
+	uint currentPathOffset = (currentDepth / 8); 
 	if ( node->left == NULL && node->right == NULL )
 	{
-		printf("Set = %c\n", node->data);
-		printf("aCode path-%u\n", *path );
 		setCode( code, node, path, *currentNode, currentDepth );
-		printf("bCode path-%u\n", *path );
-
 		(*currentNode)++;
 		return;
 	}
 
 	if( node->left != NULL ) 
 	{
-		printf("Set bit left - off=%u  depth=%u\n", currentPathOffset, currentDepth);
-		setBit( &path[currentPathOffset], currentDepth % 8 , 0);
+	/*	setBit( &(path[currentPathOffset]), currentDepth % 8 , 0);*/
 		nodeToCode( code, node->left, currentDepth + 1, path, currentNode );
 	}
 
 	if( node->right != NULL )
  	{
-		printf("Set bit right - off=%u  depth=%u\n", currentPathOffset, currentDepth);
-		setBit( &path[currentPathOffset], currentDepth % 8 , 1);
+		setBit( &(path[currentPathOffset]), currentDepth % 8 , 1);
 		nodeToCode( code, node->right, currentDepth + 1, path, currentNode );
-		setBit( &path[currentPathOffset], currentDepth % 8 , 0);
+		setBit( &(path[currentPathOffset]), currentDepth % 8 , 0);
 	}
 }
 
 void setCode( Code* code, Node* node, byte* path, uint currentNode, uint depth )
 {
-	printf("1Code path-%u\n", *path );
-	uint currentPathOffset = currentNode * code->bytesForPath;
-	printf("2Code path-%u\n", *path );
 	code->elements[currentNode].data = node->data;
-	printf("3Code path-%u\n", *path );
+	code->elements[currentNode].pathLength = depth;
 	uint i;
-	printf("4Code path-%u\n", *path );
-	printf("Element path = %p\n", code->elements[currentNode].path);
-	printf("Path = %p\n", path); 
-	code->elements[currentNode].path = malloc( sizeof( byte ) * code->bytesForPath );
-	printf("Element path = %p\n", &(code->elements[currentNode].path[0]));
-	printf("Path = %p\n", path); 
-	printf("5Code path-%u\n", *path );
 	for( i = 0; i < code->bytesForPath; ++i )
 	{
-		printf("6Code path-%u\n", path[i] );
-		/**(code->elements[currentNode].path[currentPathOffset + i]) = path[i];*/
-		printf("7Code path-%u\n", path[i] );
+		code->elements[currentNode].path[i] = path[i];
 	}
 }
 
@@ -113,7 +85,6 @@ void setBit( byte *data, int bit, int value )
 	{
 		return;
 	}
-
 	*data ^= (-value ^ *data ) & ( 1 << bit );
 }
 
