@@ -19,19 +19,30 @@ uint getBit( byte data, int bit )
 void putBitsInByteArray( byte* bytes, uint numberOfBits, byte* byteArray, 
 							uint *byteOffSet, uint *bitOffSet )
 {
-	uint i;
+	/* We need offset trackers for both the input and the output */
+	uint i, inputByteOffSet = 0, inputBitOffSet = 0;
 	for( i = 0; i < numberOfBits; ++i )
 	{
-		int bitValue = getBit( bytes[*byteOffSet], i );
+		/* Get the next bit from the input */
+		int bitValue = getBit( bytes[inputByteOffSet], inputBitOffSet );
+
+		/* Set the next bit in the output */
 		setBit( &(byteArray[*byteOffSet]), *bitOffSet, bitValue );
 		
+		/* Input OffSet Tracking */
+		inputBitOffSet++; 
+		if( !(inputBitOffSet % 8) )
+		{
+			inputByteOffSet++;
+			inputBitOffSet = 0;
+		}
+
+		/* Output OffSet Tracking */
 		(*bitOffSet)++;
-		
-		if( *bitOffSet % 8 )
+		if( !(*bitOffSet % 8) )
 		{
 			(*byteOffSet)++;
 			(*bitOffSet) = 0;
-			
 		}
 	}
 }

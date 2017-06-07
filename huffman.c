@@ -92,7 +92,8 @@ byte* compress( byte *data, uint size )
 	printf( "%d\n", compressedData[0] );
 	for( i = 1; i < currentByte; i++)
 	{
-		printDecToBin( compressedData[i] );
+		printf("%d", compressedData[i]);
+		/*printDecToBin( compressedData[i] );*/
 		printf( "\n");
 	}
 
@@ -157,12 +158,13 @@ void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data,
 								uint *currentByte, uint *currentBit, 
 								uint dataSize )
 {
-	/*
+
 	byte num = dataSize;
+	printf("num = %d\n",num);
 	putBitsInByteArray( &num, BYTE_SIZE, compressedData, currentByte, 
 							currentBit );
 
-	
+/*	
 	uint i; 
 	for( i = 0; i < dataSize ; ++i )
 	{
@@ -172,7 +174,7 @@ void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data,
 		putBitsInByteArray( codeElement->path, codeElement->pathLength, 
 								compressedData, currentByte, currentBit );
 	}
-	*/
+*/
 }
 
 CodeElement* getCodeForByte( Code* code, byte data )
