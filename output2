@@ -1,0 +1,583 @@
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 2, value = 0
+Byte Before -00000100
+Byte After -00000000
+Bit = 1, value = 1
+Byte Before -00000000
+Byte After -00000010
+Bit = 3, value = 1
+Byte Before -00000010
+Byte After -00001010
+Bit = 4, value = 1
+Byte Before -00001010
+Byte After -00011010
+Bit = 4, value = 0
+Byte Before -00011010
+Byte After -00001010
+Bit = 3, value = 0
+Byte Before -00001010
+Byte After -00000010
+Bit = 2, value = 1
+Byte Before -00000010
+Byte After -00000110
+Bit = 4, value = 1
+Byte Before -00000110
+Byte After -00010110
+Bit = 4, value = 0
+Byte Before -00010110
+Byte After -00000110
+Bit = 3, value = 1
+Byte Before -00000110
+Byte After -00001110
+Bit = 4, value = 1
+Byte Before -00001110
+Byte After -00011110
+Bit = 4, value = 0
+Byte Before -00011110
+Byte After -00001110
+Bit = 3, value = 0
+Byte Before -00001110
+Byte After -00000110
+Bit = 2, value = 0
+Byte Before -00000110
+Byte After -00000010
+Bit = 1, value = 0
+Byte Before -00000010
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 2, value = 1
+Byte Before -00000001
+Byte After -00000101
+Bit = 2, value = 0
+Byte Before -00000101
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 3, value = 1
+Byte Before -00000011
+Byte After -00001011
+Bit = 3, value = 0
+Byte Before -00001011
+Byte After -00000011
+Bit = 2, value = 1
+Byte Before -00000011
+Byte After -00000111
+Bit = 3, value = 1
+Byte Before -00000111
+Byte After -00001111
+Bit = 3, value = 0
+Byte Before -00001111
+Byte After -00000111
+Bit = 2, value = 0
+Byte Before -00000111
+Byte After -00000011
+Bit = 1, value = 0
+Byte Before -00000011
+Byte After -00000001
+Bit = 0, value = 0
+Byte Before -00000001
+Byte After -00000000
+num = 38
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 1
+Byte Before -00000000
+Byte After -00000010
+Bit = 2, value = 1
+Byte Before -00000010
+Byte After -00000110
+Bit = 3, value = 0
+Byte Before -00000110
+Byte After -00000110
+Bit = 4, value = 0
+Byte Before -00000110
+Byte After -00000110
+Bit = 5, value = 1
+Byte Before -00000110
+Byte After -00100110
+Bit = 6, value = 0
+Byte Before -00100110
+Byte After -00100110
+Bit = 7, value = 0
+Byte Before -00100110
+Byte After -00100110
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 1
+Byte Before -00000000
+Byte After -00000010
+Bit = 2, value = 0
+Byte Before -00000010
+Byte After -00000010
+Bit = 3, value = 1
+Byte Before -00000010
+Byte After -00001010
+Bit = 4, value = 1
+Byte Before -00001010
+Byte After -00011010
+Bit = 5, value = 0
+Byte Before -00011010
+Byte After -00011010
+Bit = 6, value = 0
+Byte Before -00011010
+Byte After -00011010
+Bit = 7, value = 0
+Byte Before -00011010
+Byte After -00011010
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 3, value = 1
+Byte Before -00000100
+Byte After -00001100
+Bit = 4, value = 1
+Byte Before -00001100
+Byte After -00011100
+Bit = 5, value = 0
+Byte Before -00011100
+Byte After -00011100
+Bit = 6, value = 1
+Byte Before -00011100
+Byte After -01011100
+Bit = 7, value = 0
+Byte Before -01011100
+Byte After -01011100
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 3, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 4, value = 1
+Byte Before -00000000
+Byte After -00010000
+Bit = 5, value = 0
+Byte Before -00010000
+Byte After -00010000
+Bit = 6, value = 0
+Byte Before -00010000
+Byte After -00010000
+Bit = 7, value = 0
+Byte Before -00010000
+Byte After -00010000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+Bit = 3, value = 1
+Byte Before -00000011
+Byte After -00001011
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 6, value = 1
+Byte Before -00001011
+Byte After -01001011
+Bit = 7, value = 1
+Byte Before -01001011
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+Bit = 2, value = 0
+Byte Before -00000001
+Byte After -00000001
+Bit = 3, value = 1
+Byte Before -00000001
+Byte After -00001001
+Bit = 4, value = 0
+Byte Before -00001001
+Byte After -00001001
+Bit = 5, value = 1
+Byte Before -00001001
+Byte After -00101001
+Bit = 6, value = 0
+Byte Before -00101001
+Byte After -00101001
+Bit = 7, value = 1
+Byte Before -00101001
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+Bit = 2, value = 0
+Byte Before -00000001
+Byte After -00000001
+Bit = 3, value = 1
+Byte Before -00000001
+Byte After -00001001
+Bit = 4, value = 0
+Byte Before -00001001
+Byte After -00001001
+Bit = 5, value = 0
+Byte Before -00001001
+Byte After -00001001
+Bit = 6, value = 0
+Byte Before -00001001
+Byte After -00001001
+Bit = 7, value = 0
+Byte Before -00001001
+Byte After -00001001
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 3, value = 1
+Byte Before -00000000
+Byte After -00001000
+Bit = 4, value = 1
+Byte Before -00001000
+Byte After -00011000
+Bit = 5, value = 0
+Byte Before -00011000
+Byte After -00011000
+Bit = 6, value = 1
+Byte Before -00011000
+Byte After -01011000
+Bit = 7, value = 0
+Byte Before -01011000
+Byte After -01011000
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 4, value = 1
+Byte Before -00000100
+Byte After -00010100
+Bit = 5, value = 1
+Byte Before -00010100
+Byte After -00110100
+Bit = 6, value = 1
+Byte Before -00110100
+Byte After -01110100
+Bit = 7, value = 1
+Byte Before -01110100
+Byte After -00000000
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 4, value = 1
+Byte Before -00000100
+Byte After -00010100
+Bit = 5, value = 0
+Byte Before -00010100
+Byte After -00010100
+Bit = 6, value = 1
+Byte Before -00010100
+Byte After -01010100
+Bit = 7, value = 1
+Byte Before -01010100
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+Bit = 3, value = 1
+Byte Before -00000011
+Byte After -00001011
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 6, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 7, value = 1
+Byte Before -00001011
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+Bit = 2, value = 1
+Byte Before -00000001
+Byte After -00000101
+Bit = 3, value = 0
+Byte Before -00000101
+Byte After -00000101
+Bit = 4, value = 0
+Byte Before -00000101
+Byte After -00000101
+Bit = 5, value = 0
+Byte Before -00000101
+Byte After -00000101
+Bit = 6, value = 1
+Byte Before -00000101
+Byte After -01000101
+Bit = 7, value = 1
+Byte Before -01000101
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+Bit = 3, value = 1
+Byte Before -00000011
+Byte After -00001011
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 6, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 7, value = 0
+Byte Before -00001011
+Byte After -00001011
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 3, value = 1
+Byte Before -00000100
+Byte After -00001100
+Bit = 4, value = 1
+Byte Before -00001100
+Byte After -00011100
+Bit = 5, value = 0
+Byte Before -00011100
+Byte After -00011100
+Bit = 6, value = 0
+Byte Before -00011100
+Byte After -00011100
+Bit = 7, value = 1
+Byte Before -00011100
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 2, value = 1
+Byte Before -00000011
+Byte After -00000111
+Bit = 3, value = 0
+Byte Before -00000111
+Byte After -00000111
+Bit = 4, value = 0
+Byte Before -00000111
+Byte After -00000111
+Bit = 5, value = 1
+Byte Before -00000111
+Byte After -00100111
+Bit = 6, value = 1
+Byte Before -00100111
+Byte After -01100111
+Bit = 7, value = 0
+Byte Before -01100111
+Byte After -01100111
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 3, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 4, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 5, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 6, value = 1
+Byte Before -00000000
+Byte After -01000000
+Bit = 7, value = 1
+Byte Before -01000000
+Byte After -00000000
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+Bit = 2, value = 1
+Byte Before -00000000
+Byte After -00000100
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 4, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 5, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 6, value = 0
+Byte Before -00000100
+Byte After -00000100
+Bit = 7, value = 1
+Byte Before -00000100
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+Byte After -00000011
+Bit = 2, value = 1
+Byte Before -00000011
+Byte After -00000111
+Bit = 3, value = 0
+Byte Before -00000111
+Byte After -00000111
+Bit = 4, value = 1
+Byte Before -00000111
+Byte After -00010111
+Bit = 5, value = 1
+Byte Before -00010111
+Byte After -00110111
+Bit = 6, value = 0
+Byte Before -00110111
+Byte After -00110111
+Bit = 7, value = 0
+Byte Before -00110111
+Byte After -00110111
+currentByte- 64
+Digit   Binary   Char
+   32 - 00100000 -  
+    3 - 00000011 - 
+    0 - 00000000 -  
+   97 - 01100001 - a
+    3 - 00000011 - 
+    4 - 00000100 - 
+  110 - 01101110 - n
+    4 - 00000100 - 
+    2 - 00000010 - 
+  112 - 01110000 - p
+    5 - 00000101 - 
+   10 - 00001010 - 
+
+   73 - 01001001 - I
+    5 - 00000101 - 
+   26 - 00011010 - 
+  101 - 01100101 - e
+    5 - 00000101 - 
+    6 - 00000110 - 
+  103 - 01100111 - g
+    5 - 00000101 - 
+   22 - 00010110 - 
+   99 - 01100011 - c
+    5 - 00000101 - 
+   14 - 00001110 - 
+  104 - 01101000 - h
+    5 - 00000101 - 
+   30 - 00011110 - 
+  114 - 01110010 - r
+    3 - 00000011 - 
+    1 - 00000001 - 
+  116 - 01110100 - t
+    3 - 00000011 - 
+    5 - 00000101 - 
+  115 - 01110011 - s
+    4 - 00000100 - 
+    3 - 00000011 - 
+  109 - 01101101 - m
+    4 - 00000100 - 
+   11 - 00001011 - 
+  121 - 01111001 - y
+    4 - 00000100 - 
+    7 - 00000111 - 
+  105 - 01101001 - i
+    4 - 00000100 - 
+   15 - 00001111 - 
+   38 - 00100110 - &
+   26 - 00011010 - 
+   92 - 01011100 - \
+   16 - 00010000 - 
+  -53 - 00000000 - Ë
+  -87 - 00000000 - ©
+    9 - 00001001 - 	
+   88 - 01011000 - X
+  -12 - 00000000 - ô
+  -44 - 00000000 - Ô
+ -117 - 00000000 - ‹
+  -59 - 00000000 - Å
+   11 - 00001011 - 
+ -100 - 00000000 - œ
+  103 - 01100111 - g
+  -64 - 00000000 - À
+ -124 - 00000000 - „
+   55 - 00110111 - 7

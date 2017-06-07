@@ -54,7 +54,6 @@ void nodeToCode( Code* code, Node* node,
 
 	if( node->left != NULL ) 
 	{
-	/*	setBit( &(path[currentPathOffset]), currentDepth % 8 , 0);*/
 		nodeToCode( code, node->left, currentDepth + 1, path, currentNode );
 	}
 

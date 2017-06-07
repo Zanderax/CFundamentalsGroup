@@ -8,8 +8,8 @@
 #include "dataTypes.h"
 
 void setBit( byte*, int, int );
-uint getBit( byte, int );
+int getBit( byte, int );
 void putBitsInByteArray( byte* bytes, uint numberOfBits, byte* byteArray, 
-							uint *byteOffSet, uint *bitOffSet );
+							int *byteOffSet, int *bitOffSet );
 
 #endif /* BIT_OPERATIONS */

@@ -3,21 +3,21 @@
 void setBit( byte *data, int bit, int value )
 {
 	/* Swap the endianess of the bit so it writes from left to right */
-	/*bit = -(bit - 7);*/
 	if( bit < 0 || bit > 7 || ( value != 0 && value != 1 ) )
 	{
+		printf("ERROR");
 		return;
 	}
 	*data ^= (-value ^ *data ) & ( 1 << bit );
 }
 
-uint getBit( byte data, int bit )
+int getBit( byte data, int bit )
 {
-	return ( data >> bit ) & 1;
+	return (data >> bit ) & 1;
 }
 
 void putBitsInByteArray( byte* bytes, uint numberOfBits, byte* byteArray, 
-							uint *byteOffSet, uint *bitOffSet )
+							int *byteOffSet, int *bitOffSet )
 {
 	/* We need offset trackers for both the input and the output */
 	uint i, inputByteOffSet = 0, inputBitOffSet = 0;

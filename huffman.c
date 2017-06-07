@@ -80,7 +80,7 @@ byte* compress( byte *data, uint size )
 
 	byte* compressedData = calloc( size*5, sizeof( byte ) );
 
-	uint currentByte = 0, currentBit = 0;
+	int currentByte = 0, currentBit = 0;
 	
 	addHuffmanHeaderToByteArray( compressedData, code, data, &currentByte );
 	
@@ -89,11 +89,12 @@ byte* compress( byte *data, uint size )
 
 	printf("currentByte- %d\n", currentByte);
 
-	printf( "%d\n", compressedData[0] );
+	printf("Digit   Binary   Char\n");
 	for( i = 1; i < currentByte; i++)
 	{
-		printf("%d", compressedData[i]);
-		/*printDecToBin( compressedData[i] );*/
+		printf("%5d - ", compressedData[i]);
+		printDecToBin( compressedData[i] );
+		printf(" - %c", compressedData[i]);
 		printf( "\n");
 	}
 
@@ -130,9 +131,9 @@ x byte - Paths
 */
 
 void addHuffmanHeaderToByteArray(byte* compressedData, Code *code, byte* data, 
-									uint *currentByte )
+									int *currentByte )
 {
-	uint byteOffSet = *currentByte;
+	int byteOffSet = *currentByte;
 	compressedData[byteOffSet++] = code->elementsCount;
 	uint i;
 	for( i = 0; i < code->elementsCount; ++i )
@@ -155,7 +156,7 @@ void addHuffmanHeaderToByteArray(byte* compressedData, Code *code, byte* data,
 
 
 void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data, 
-								uint *currentByte, uint *currentBit, 
+								int *currentByte, int *currentBit, 
 								uint dataSize )
 {
 
@@ -164,7 +165,7 @@ void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data,
 	putBitsInByteArray( &num, BYTE_SIZE, compressedData, currentByte, 
 							currentBit );
 
-/*	
+	
 	uint i; 
 	for( i = 0; i < dataSize ; ++i )
 	{
@@ -174,7 +175,7 @@ void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data,
 		putBitsInByteArray( codeElement->path, codeElement->pathLength, 
 								compressedData, currentByte, currentBit );
 	}
-*/
+
 }
 
 CodeElement* getCodeForByte( Code* code, byte data )
@@ -208,20 +209,11 @@ void showOffCode( Code *code )
 	}
 }
 
-void printDecToBin( int dec )
+void printDecToBin( byte  dec )
 {
-	int bin = 128;
-	while(bin)
+	int i;
+	for( i = 0; i < 8; ++i )
 	{
-		if((dec - bin) >= 0)
-		{
-			dec -= bin;
-			printf("1");
-		}
-		else
-		{
-			printf("0");
-		}
-		bin /= 2;
+		printf("%d", getBit( dec, i ));
 	}
 }

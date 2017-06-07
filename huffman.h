@@ -14,11 +14,11 @@ byte* compress( byte*, uint );
 CodeElement* getCodeForByte( Code*, byte ); 
 void showOffEncoding( byte*, uint );
 void showOffCode( Code* );
-void printDecToBin( int );
+void printDecToBin( byte );
 void addHuffmanHeaderToByteArray(byte* compressedData, Code *code, byte* data, 
-									uint *currentByte );
+									int *currentByte );
 void addHuffmanDataToByteArray( byte* compressedData, Code *code, byte* data, 
-									uint *currentByte, uint *currentBit,
+									int *currentByte, int *currentBit,
 									uint dataSize );
 
 #endif /* HUFFMAN */

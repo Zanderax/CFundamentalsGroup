@@ -1,0 +1,1035 @@
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+Bit = 2, value = 0
+Byte Before -00000100
+Byte After -00000000
+Bit = 1, value = 1
+Byte Before -00000000
+bitShift 2
+data 0
+shiftedData 2
+data 2
+Byte After -00000010
+Bit = 3, value = 1
+Byte Before -00000010
+bitShift 8
+data 2
+shiftedData 10
+data 10
+Byte After -00001010
+Bit = 4, value = 1
+Byte Before -00001010
+bitShift 16
+data 10
+shiftedData 26
+data 26
+Byte After -00011010
+Bit = 4, value = 0
+Byte Before -00011010
+Byte After -00001010
+Bit = 3, value = 0
+Byte Before -00001010
+Byte After -00000010
+Bit = 2, value = 1
+Byte Before -00000010
+bitShift 4
+data 2
+shiftedData 6
+data 6
+Byte After -00000110
+Bit = 4, value = 1
+Byte Before -00000110
+bitShift 16
+data 6
+shiftedData 22
+data 22
+Byte After -00010110
+Bit = 4, value = 0
+Byte Before -00010110
+Byte After -00000110
+Bit = 3, value = 1
+Byte Before -00000110
+bitShift 8
+data 6
+shiftedData 14
+data 14
+Byte After -00001110
+Bit = 4, value = 1
+Byte Before -00001110
+bitShift 16
+data 14
+shiftedData 30
+data 30
+Byte After -00011110
+Bit = 4, value = 0
+Byte Before -00011110
+Byte After -00001110
+Bit = 3, value = 0
+Byte Before -00001110
+Byte After -00000110
+Bit = 2, value = 0
+Byte Before -00000110
+Byte After -00000010
+Bit = 1, value = 0
+Byte Before -00000010
+Byte After -00000000
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+Bit = 2, value = 1
+Byte Before -00000001
+bitShift 4
+data 1
+shiftedData 5
+data 5
+Byte After -00000101
+Bit = 2, value = 0
+Byte Before -00000101
+Byte After -00000001
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+Bit = 3, value = 1
+Byte Before -00000011
+bitShift 8
+data 3
+shiftedData 11
+data 11
+Byte After -00001011
+Bit = 3, value = 0
+Byte Before -00001011
+Byte After -00000011
+Bit = 2, value = 1
+Byte Before -00000011
+bitShift 4
+data 3
+shiftedData 7
+data 7
+Byte After -00000111
+Bit = 3, value = 1
+Byte Before -00000111
+bitShift 8
+data 7
+shiftedData 15
+data 15
+Byte After -00001111
+Bit = 3, value = 0
+Byte Before -00001111
+Byte After -00000111
+Bit = 2, value = 0
+Byte Before -00000111
+Byte After -00000011
+Bit = 1, value = 0
+Byte Before -00000011
+Byte After -00000001
+Bit = 0, value = 0
+Byte Before -00000001
+Byte After -00000000
+num = 38
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000000
+bitShift 2
+data 0
+shiftedData 2
+data 2
+Byte After -00000010
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000010
+bitShift 4
+data 2
+shiftedData 6
+data 6
+Byte After -00000110
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000110
+Byte After -00000110
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00000110
+Byte After -00000110
+bitOffSet 5
+Bit = 5, value = 1
+Byte Before -00000110
+bitShift 32
+data 6
+shiftedData 38
+data 38
+Byte After -00100110
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00100110
+Byte After -00100110
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00100110
+Byte After -00100110
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000000
+bitShift 2
+data 0
+shiftedData 2
+data 2
+Byte After -00000010
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000010
+Byte After -00000010
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000010
+bitShift 8
+data 2
+shiftedData 10
+data 10
+Byte After -00001010
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00001010
+bitShift 16
+data 10
+shiftedData 26
+data 26
+Byte After -00011010
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00011010
+Byte After -00011010
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00011010
+Byte After -00011010
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00011010
+Byte After -00011010
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000100
+bitShift 8
+data 4
+shiftedData 12
+data 12
+Byte After -00001100
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00001100
+bitShift 16
+data 12
+shiftedData 28
+data 28
+Byte After -00011100
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00011100
+Byte After -00011100
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00011100
+bitShift 64
+data 28
+shiftedData 92
+data 92
+Byte After -01011100
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -01011100
+Byte After -01011100
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00000000
+bitShift 16
+data 0
+shiftedData 16
+data 16
+Byte After -00010000
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00010000
+Byte After -00010000
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00010000
+Byte After -00010000
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00010000
+Byte After -00010000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000011
+bitShift 8
+data 3
+shiftedData 11
+data 11
+Byte After -00001011
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00001011
+bitShift 64
+data 11
+shiftedData 75
+data 75
+Byte After -01001011
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -01001011
+bitShift 128
+data 75
+shiftedData 203
+data -53
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000001
+Byte After -00000001
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000001
+bitShift 8
+data 1
+shiftedData 9
+data 9
+Byte After -00001001
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00001001
+Byte After -00001001
+bitOffSet 5
+Bit = 5, value = 1
+Byte Before -00001001
+bitShift 32
+data 9
+shiftedData 41
+data 41
+Byte After -00101001
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00101001
+Byte After -00101001
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -00101001
+bitShift 128
+data 41
+shiftedData 169
+data -87
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000001
+Byte After -00000001
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000001
+bitShift 8
+data 1
+shiftedData 9
+data 9
+Byte After -00001001
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00001001
+Byte After -00001001
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00001001
+Byte After -00001001
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00001001
+Byte After -00001001
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00001001
+Byte After -00001001
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000000
+bitShift 8
+data 0
+shiftedData 8
+data 8
+Byte After -00001000
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00001000
+bitShift 16
+data 8
+shiftedData 24
+data 24
+Byte After -00011000
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00011000
+Byte After -00011000
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00011000
+bitShift 64
+data 24
+shiftedData 88
+data 88
+Byte After -01011000
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -01011000
+Byte After -01011000
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00000100
+bitShift 16
+data 4
+shiftedData 20
+data 20
+Byte After -00010100
+bitOffSet 5
+Bit = 5, value = 1
+Byte Before -00010100
+bitShift 32
+data 20
+shiftedData 52
+data 52
+Byte After -00110100
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00110100
+bitShift 64
+data 52
+shiftedData 116
+data 116
+Byte After -01110100
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -01110100
+bitShift 128
+data 116
+shiftedData 244
+data -12
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00000100
+bitShift 16
+data 4
+shiftedData 20
+data 20
+Byte After -00010100
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00010100
+Byte After -00010100
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00010100
+bitShift 64
+data 20
+shiftedData 84
+data 84
+Byte After -01010100
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -01010100
+bitShift 128
+data 84
+shiftedData 212
+data -44
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000011
+bitShift 8
+data 3
+shiftedData 11
+data 11
+Byte After -00001011
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -00001011
+bitShift 128
+data 11
+shiftedData 139
+data -117
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000001
+Byte After -00000001
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000001
+bitShift 4
+data 1
+shiftedData 5
+data 5
+Byte After -00000101
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000101
+Byte After -00000101
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00000101
+Byte After -00000101
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00000101
+Byte After -00000101
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00000101
+bitShift 64
+data 5
+shiftedData 69
+data 69
+Byte After -01000101
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -01000101
+bitShift 128
+data 69
+shiftedData 197
+data -59
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000011
+Byte After -00000011
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000011
+bitShift 8
+data 3
+shiftedData 11
+data 11
+Byte After -00001011
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00001011
+Byte After -00001011
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+bitOffSet 3
+Bit = 3, value = 1
+Byte Before -00000100
+bitShift 8
+data 4
+shiftedData 12
+data 12
+Byte After -00001100
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00001100
+bitShift 16
+data 12
+shiftedData 28
+data 28
+Byte After -00011100
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00011100
+Byte After -00011100
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00011100
+Byte After -00011100
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -00011100
+bitShift 128
+data 28
+shiftedData 156
+data -100
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000011
+bitShift 4
+data 3
+shiftedData 7
+data 7
+Byte After -00000111
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000111
+Byte After -00000111
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00000111
+Byte After -00000111
+bitOffSet 5
+Bit = 5, value = 1
+Byte Before -00000111
+bitShift 32
+data 7
+shiftedData 39
+data 39
+Byte After -00100111
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00100111
+bitShift 64
+data 39
+shiftedData 103
+data 103
+Byte After -01100111
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -01100111
+Byte After -01100111
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 6
+Bit = 6, value = 1
+Byte Before -00000000
+bitShift 64
+data 0
+shiftedData 64
+data 64
+Byte After -01000000
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -01000000
+bitShift 128
+data 64
+shiftedData 192
+data -64
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 1
+Bit = 1, value = 0
+Byte Before -00000000
+Byte After -00000000
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000000
+bitShift 4
+data 0
+shiftedData 4
+data 4
+Byte After -00000100
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 4
+Bit = 4, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 5
+Bit = 5, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00000100
+Byte After -00000100
+bitOffSet 7
+Bit = 7, value = 1
+Byte Before -00000100
+bitShift 128
+data 4
+shiftedData 132
+data -124
+Byte After -00000000
+bitOffSet 0
+Bit = 0, value = 1
+Byte Before -00000000
+bitShift 1
+data 0
+shiftedData 1
+data 1
+Byte After -00000001
+bitOffSet 1
+Bit = 1, value = 1
+Byte Before -00000001
+bitShift 2
+data 1
+shiftedData 3
+data 3
+Byte After -00000011
+bitOffSet 2
+Bit = 2, value = 1
+Byte Before -00000011
+bitShift 4
+data 3
+shiftedData 7
+data 7
+Byte After -00000111
+bitOffSet 3
+Bit = 3, value = 0
+Byte Before -00000111
+Byte After -00000111
+bitOffSet 4
+Bit = 4, value = 1
+Byte Before -00000111
+bitShift 16
+data 7
+shiftedData 23
+data 23
+Byte After -00010111
+bitOffSet 5
+Bit = 5, value = 1
+Byte Before -00010111
+bitShift 32
+data 23
+shiftedData 55
+data 55
+Byte After -00110111
+bitOffSet 6
+Bit = 6, value = 0
+Byte Before -00110111
+Byte After -00110111
+bitOffSet 7
+Bit = 7, value = 0
+Byte Before -00110111
+Byte After -00110111
+currentByte- 64
+Digit   Binary   Char
+   32 - 00100000 -  
+    3 - 00000011 - 
+    0 - 00000000 -  
+   97 - 01100001 - a
+    3 - 00000011 - 
+    4 - 00000100 - 
+  110 - 01101110 - n
+    4 - 00000100 - 
+    2 - 00000010 - 
+  112 - 01110000 - p
+    5 - 00000101 - 
+   10 - 00001010 - 
+
+   73 - 01001001 - I
+    5 - 00000101 - 
+   26 - 00011010 - 
+  101 - 01100101 - e
+    5 - 00000101 - 
+    6 - 00000110 - 
+  103 - 01100111 - g
+    5 - 00000101 - 
+   22 - 00010110 - 
+   99 - 01100011 - c
+    5 - 00000101 - 
+   14 - 00001110 - 
+  104 - 01101000 - h
+    5 - 00000101 - 
+   30 - 00011110 - 
+  114 - 01110010 - r
+    3 - 00000011 - 
+    1 - 00000001 - 
+  116 - 01110100 - t
+    3 - 00000011 - 
+    5 - 00000101 - 
+  115 - 01110011 - s
+    4 - 00000100 - 
+    3 - 00000011 - 
+  109 - 01101101 - m
+    4 - 00000100 - 
+   11 - 00001011 - 
+  121 - 01111001 - y
+    4 - 00000100 - 
+    7 - 00000111 - 
+  105 - 01101001 - i
+    4 - 00000100 - 
+   15 - 00001111 - 
+   38 - 00100110 - &
+   26 - 00011010 - 
+   92 - 01011100 - \
+   16 - 00010000 - 
+  -53 - 00000000 - Ë
+  -87 - 00000000 - ©
+    9 - 00001001 - 	
+   88 - 01011000 - X
+  -12 - 00000000 - ô
+  -44 - 00000000 - Ô
+ -117 - 00000000 - ‹
+  -59 - 00000000 - Å
+   11 - 00001011 - 
+ -100 - 00000000 - œ
+  103 - 01100111 - g
+  -64 - 00000000 - À
+ -124 - 00000000 - „
+   55 - 00110111 - 7
