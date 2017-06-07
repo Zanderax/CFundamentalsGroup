@@ -77,17 +77,6 @@ void setCode( Code* code, Node* node, byte* path, uint currentNode, uint depth )
 	}
 }
 
-void setBit( byte *data, int bit, int value )
-{
-	/* Swap the endianess of the bit so it writes from left to right */
-	/*bit = -(bit - 7);*/
-	if( bit < 0 || bit > 7 || ( value != 0 && value != 1 ) )
-	{
-		return;
-	}
-	*data ^= (-value ^ *data ) & ( 1 << bit );
-}
-
 uint findTreeDepth( Node *node )
 {
 	uint maxDepth = 0, rightDepth = 0;

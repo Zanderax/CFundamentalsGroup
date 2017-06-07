@@ -6,10 +6,10 @@
 #include <string.h>
 #include <math.h>
 #include "dataTypes.h"
+#include "bitOperations.h"
 
 Code* createHuffmanCode( Node* ); 
 void populateHuffmanCode( Code*, Node* );
-void setBit( byte*, int, int );
 uint findTreeDepth( Node* );
 uint countLeafs( Node* );
 void nodeToCode( Code*, Node*, uint, byte*, uint* );

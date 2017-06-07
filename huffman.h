@@ -11,8 +11,14 @@
 #include "huffmanCode.h"
 
 byte* compress( byte*, uint );
+CodeElement* getCodeForByte( Code*, byte ); 
 void showOffEncoding( byte*, uint );
 void showOffCode( Code* );
 void printDecToBin( int );
+void addHuffmanHeaderToByteArray(byte* compressedData, Code *code, byte* data, 
+									uint *currentByte );
+void addHuffmanDataToByteArray( byte* compressedData, Code *code, byte* data, 
+									uint *currentByte, uint *currentBit,
+									uint dataSize );
 
 #endif /* HUFFMAN */

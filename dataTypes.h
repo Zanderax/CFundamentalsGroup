@@ -11,7 +11,9 @@ typedef int bool;
 #define TRUE 1
 #define FALSE 0
 
-#define dataSize 40
+
+#define arraySize 38
+#define BYTE_SIZE 8
 
 typedef struct 
 {
@@ -44,7 +46,7 @@ typedef struct CodeElement
 
 typedef struct Code
 {
-	uint elementsCount;
+	unsigned char elementsCount;
 	uint bytesForPath;
 	CodeElement *elements;
 } Code;

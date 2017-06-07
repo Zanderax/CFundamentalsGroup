@@ -2,15 +2,23 @@
 
 int main()
 {
-	byte data[dataSize] = 
+	/*byte data[dataSize] = 
 	{ 
 		'I', ' ', 'a', 'm', ' ', 'a', ' ', 'm', 'a', 's',
 		't', 'e', 'r', ' ', 'a', 't', ' ', 't', 'y', 'p',
 		'i', 'n', 'g', ' ', 'i', 'n', ' ', 'a', ' ', 'c',
 		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
+	};*/
+	
+	byte data[arraySize] = 
+	{ 
+		'I', ' ', 'a', 'm', ' ', 'a', ' ', 'm', 'a', 's',
+		't', 'e', 'r', ' ', 'a', 't', ' ', 't', 'y', 'p',
+		'i', 'n', 'g', ' ', 'i', 'n', ' ',  'c',
+		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
 
-	byte *returnData = compress( data, dataSize );
+	byte *returnData = compress( data, arraySize );
 
 	
 	/*showOffEncoding( data, dataSize );*/
@@ -34,23 +42,23 @@ void showOffEncoding( byte *data, uint size )
 	
 	uint i;
 	
-	for( i = 0; i < dataSize; ++i )
+	for( i = 0; i < size; ++i )
 	{
 		printf( "%c", data[i] );
 	} 
 	printf( "\n" );
 	
-	encode( data, dataSize );
+	encode( data, size );
 
-	for( i = 0; i < dataSize; ++i )
+	for( i = 0; i < size; ++i )
 	{
 		printf( "%c", data[i] );
 	} 
 	printf( "\n" );
 
-	decode( data, dataSize );
+	decode( data, size );
 
-	for( i = 0; i < dataSize; ++i )
+	for( i = 0; i < size; ++i )
 	{
 		printf( "%c", data[i] );
 	} 
@@ -66,11 +74,29 @@ byte* compress( byte *data, uint size )
 
 	Node* node = createHuffmanTree( byteList );
 
-	/*printHuffmanTree( node ); */
+	/*printHuffmanTree( node );*/
 
 	Code* code = createHuffmanCode( node );
 
-	showOffCode( code );
+	byte* compressedData = calloc( size*5, sizeof( byte ) );
+
+	uint currentByte = 0, currentBit = 0;
+	
+	addHuffmanHeaderToByteArray( compressedData, code, data, &currentByte );
+	
+	addHuffmanDataToByteArray( compressedData, code, data, 
+								&currentByte, &currentBit, size );
+
+	printf("currentByte- %d\n", currentByte);
+
+	printf( "%d\n", compressedData[0] );
+	for( i = 1; i < currentByte; i++)
+	{
+		printDecToBin( compressedData[i] );
+		printf( "\n");
+	}
+
+
 
 	/* TODO - Compress Data With Huffman Code */
 
@@ -78,6 +104,87 @@ byte* compress( byte *data, uint size )
 
 	
 	return data;
+}
+
+/*
+Huffman Code Format
+1 Byte - Number of Code Elements
+FOR(Number of Code Elements)
+{
+	1 Byte - Data
+	1 Byte - Path Length
+	n Byte - Path
+}
+4 Byte - Number of Elements
+x byte - Paths
+*/
+
+/*
+	When it says n bytes then use the number stored above.
+	e.g. 
+		n Byte - Path
+		n = Path Length
+
+	x Bytes is untracked length, you keep reading for each number of elements
+*/
+
+void addHuffmanHeaderToByteArray(byte* compressedData, Code *code, byte* data, 
+									uint *currentByte )
+{
+	uint byteOffSet = *currentByte;
+	compressedData[byteOffSet++] = code->elementsCount;
+	uint i;
+	for( i = 0; i < code->elementsCount; ++i )
+	{
+		compressedData[byteOffSet++] = code->elements[i].data; 
+		compressedData[byteOffSet++] = code->elements[i].pathLength;
+		uint j;
+		uint pathLength = (code->elements[i].pathLength / 8 );
+		if ( (code->elements[i].pathLength % 8) )
+		{
+			++pathLength;
+		}
+		for( j = 0; j < pathLength; ++j)
+		{
+			compressedData[byteOffSet++] = code->elements[i].path[j]; 
+		}
+	}
+	*currentByte = byteOffSet;
+}
+
+
+void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data, 
+								uint *currentByte, uint *currentBit, 
+								uint dataSize )
+{
+	/*
+	byte num = dataSize;
+	putBitsInByteArray( &num, BYTE_SIZE, compressedData, currentByte, 
+							currentBit );
+
+	
+	uint i; 
+	for( i = 0; i < dataSize ; ++i )
+	{
+		CodeElement* codeElement = getCodeForByte( code, data[i] );
+		uint j;
+		
+		putBitsInByteArray( codeElement->path, codeElement->pathLength, 
+								compressedData, currentByte, currentBit );
+	}
+	*/
+}
+
+CodeElement* getCodeForByte( Code* code, byte data )
+{
+	uint i;
+	for( i = 0; i < code->elementsCount; ++i )
+	{
+		if(code->elements[i].data == data )
+		{
+			return &(code->elements[i]);
+		}
+	}
 }
 
 void showOffCode( Code *code )
