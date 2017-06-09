@@ -22,23 +22,24 @@ int main()
 	byte *inputData;
 
 	uint inputSize = getSizeOfFile( "database" );
-
-	printf( "Size = %u\n", inputSize );
+	inputData = calloc( inputSize, sizeof( byte ) );
 	
-	/* loadFromFile( data, &inputSize, "database" );*/
+	readFromFile( inputData, &inputSize, "database" );
 
-	/* decode( data, inputSize ); */
+	printf("%u\n", inputSize );
+
+	decode( inputData, inputSize );
 
 	/* decompress( data, inputSize ); */
 
-	/*
+	
 	uint i;
 	for( i = 0; i < inputSize; ++i )
 	{
-		printf("%c", data[i]);
+		printf("%c", inputData[i]);
 	}
 	printf("\n");
-	*/
+	
 	return 0;
 }
 	

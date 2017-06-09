@@ -6,6 +6,9 @@ void writeToFile( byte* data, uint dataSize, byte* fileName )
 
 	fp = fopen( fileName, "w" );
 
+	if( !fp )
+		return;
+
 	uint i;
 
 	for( i = 0; i < dataSize; ++i )
@@ -31,6 +34,21 @@ uint getSizeOfFile( byte* fileName )
 	return size;
 }
 
-byte* readFromFile( uint* inputSize, byte* fileName )
+void readFromFile( byte* data, uint* inputSize, byte* fileName )
 {
+	FILE *fp;
+
+	fp = fopen( fileName, "r");
+
+	if( !fp )
+		return;
+
+	uint i;
+
+	for( i = 0; i < *inputSize; ++i )
+	{
+		data[i] = getc( fp );
+	}
+	
+	fclose( fp );
 }

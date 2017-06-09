@@ -14,6 +14,7 @@ void encode( byte* data, uint size )
 	{
 		data[i] = data[i] ^ *key;
 	}
+
 	free( key );
 }
 
