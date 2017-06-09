@@ -10,7 +10,7 @@
 #include "huffmanTree.h"
 #include "huffmanCode.h"
 
-byte* compress( byte*, uint );
+byte* compress( byte*, uint, uint* );
 CodeElement* getCodeForByte( Code*, byte ); 
 void showOffEncoding( byte*, uint );
 void showOffCode( Code* );

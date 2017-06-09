@@ -18,8 +18,13 @@ int main()
 		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
 
-	byte *returnData = compress( data, arraySize );
+	uint outputSize = 0;
 
+	byte *compressedData = compress( data, arraySize, &outputSize );
+
+	encode( compressedData, outputSize );
+
+	/*writeToFile( compressedData, dataSize, fileName );*/ 
 	
 	/*showOffEncoding( data, dataSize );*/
 
@@ -66,46 +71,42 @@ void showOffEncoding( byte *data, uint size )
 }
 
 
-byte* compress( byte *data, uint size ) 
+byte* compress( byte *data, uint size, uint *dataSize ) 
 {
-
 	ByteList *byteList = createByteList( data, size );
-	uint i;
 
 	Node* node = createHuffmanTree( byteList );
 
-	/*printHuffmanTree( node );*/
-
 	Code* code = createHuffmanCode( node );
 
-	byte* compressedData = calloc( size*5, sizeof( byte ) );
+	byte* buf = calloc( MAX_HEADER_SIZE + size , sizeof( byte ) );
 
 	int currentByte = 0, currentBit = 0;
 	
-	addHuffmanHeaderToByteArray( compressedData, code, data, &currentByte );
+	addHuffmanHeaderToByteArray( buf, code, data, &currentByte );
 	
-	addHuffmanDataToByteArray( compressedData, code, data, 
+	addHuffmanDataToByteArray( buf, code, data, 
 								&currentByte, &currentBit, size );
 
-	printf("currentByte- %d\n", currentByte);
-
-	printf("Digit   Binary   Char\n");
-	for( i = 1; i < currentByte; i++)
+	if( !( currentBit % 8 ) )
 	{
-		printf("%5d - ", compressedData[i]);
-		printDecToBin( compressedData[i] );
-		printf(" - %c", compressedData[i]);
-		printf( "\n");
+		currentByte++;
+	}
+	
+	byte* compressedData = calloc( currentByte, sizeof( byte ) );
+
+	uint i;
+
+	for ( i = 0; i < currentByte; i++ )
+	{
+		compressedData[i] = buf[i];
 	}
 
+	free( buf ); 
 
-
-	/* TODO - Compress Data With Huffman Code */
-
-	/* TODO - Return Huffman Code and Compressed Data */
-
+	*dataSize = currentByte;
 	
-	return data;
+	return compressedData;
 }
 
 /*
@@ -161,7 +162,6 @@ void addHuffmanDataToByteArray( byte *compressedData, Code *code, byte* data,
 {
 
 	byte num = dataSize;
-	printf("num = %d\n",num);
 	putBitsInByteArray( &num, BYTE_SIZE, compressedData, currentByte, 
 							currentBit );
 

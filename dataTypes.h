@@ -15,6 +15,12 @@ typedef int bool;
 #define arraySize 38
 #define BYTE_SIZE 8
 
+/* 
+	The theroetical maximum size for the headers is 66048 bytes.
+	The full calculation and justification can be found in the report.
+*/
+#define MAX_HEADER_SIZE 66048 
+
 typedef struct 
 {
 	char first_name[MAX_NAME_SIZE];
