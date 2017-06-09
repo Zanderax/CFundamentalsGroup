@@ -12,7 +12,7 @@ typedef int bool;
 #define FALSE 0
 
 
-#define arraySize 38
+#define arraySize 40 
 #define BYTE_SIZE 8
 
 /* 
@@ -69,4 +69,10 @@ typedef struct
 	uint size;
 	ByteListElement *elements;
 } ByteList;
+
+
+#define string 
+
+
+
 #endif /* DATA_TYPES */

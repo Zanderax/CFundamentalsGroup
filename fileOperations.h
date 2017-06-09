@@ -5,6 +5,7 @@
 
 #include "dataTypes.h"
 
-int writeToFile( byte* data, uint dataSize, byte* fileName );
-
+void writeToFile( byte* data, uint dataSize, byte* fileName );
+byte* readFromFile( uint* inputSize, byte* fileName );
+uint getSizeOfFile( byte* fileName );
 #endif /* FILE_OPERATIONS */

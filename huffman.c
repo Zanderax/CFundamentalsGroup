@@ -2,21 +2,14 @@
 
 int main()
 {
-	/*byte data[dataSize] = 
+	byte data[arraySize] = 
 	{ 
 		'I', ' ', 'a', 'm', ' ', 'a', ' ', 'm', 'a', 's',
 		't', 'e', 'r', ' ', 'a', 't', ' ', 't', 'y', 'p',
 		'i', 'n', 'g', ' ', 'i', 'n', ' ', 'a', ' ', 'c',
 		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
-	};*/
-	
-	byte data[arraySize] = 
-	{ 
-		'I', ' ', 'a', 'm', ' ', 'a', ' ', 'm', 'a', 's',
-		't', 'e', 'r', ' ', 'a', 't', ' ', 't', 'y', 'p',
-		'i', 'n', 'g', ' ', 'i', 'n', ' ',  'c',
-		'h', 'a', 'r', ' ', 'a', 'r', 'r', 'a', 'y', 's'
 	};
+	
 
 	uint outputSize = 0;
 
@@ -25,9 +18,27 @@ int main()
 	encode( compressedData, outputSize );
 
 	writeToFile( compressedData, outputSize, "database" );
-	
-	/*showOffEncoding( data, dataSize );*/
 
+	byte *inputData;
+
+	uint inputSize = getSizeOfFile( "database" );
+
+	printf( "Size = %u\n", inputSize );
+	
+	/* loadFromFile( data, &inputSize, "database" );*/
+
+	/* decode( data, inputSize ); */
+
+	/* decompress( data, inputSize ); */
+
+	/*
+	uint i;
+	for( i = 0; i < inputSize; ++i )
+	{
+		printf("%c", data[i]);
+	}
+	printf("\n");
+	*/
 	return 0;
 }
 	

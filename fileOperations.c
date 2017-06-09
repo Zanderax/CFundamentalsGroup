@@ -1,6 +1,6 @@
 #include "fileOperations.h"
 
-int writeToFile( byte* data, uint dataSize, byte* fileName )
+void writeToFile( byte* data, uint dataSize, byte* fileName )
 {
 	FILE *fp;
 
@@ -14,4 +14,23 @@ int writeToFile( byte* data, uint dataSize, byte* fileName )
 	}
 
 	fclose( fp );
+}
+
+uint getSizeOfFile( byte* fileName )
+{
+	FILE *fp;
+
+	fp = fopen( fileName, "r");
+
+	if( !fp )
+		return 1;
+
+	fseek( fp, 0L, SEEK_END );
+	uint size = ftell( fp );
+	fclose( fp );
+	return size;
+}
+
+byte* readFromFile( uint* inputSize, byte* fileName )
+{
 }
