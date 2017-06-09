@@ -24,7 +24,7 @@ int main()
 
 	encode( compressedData, outputSize );
 
-	/*writeToFile( compressedData, dataSize, fileName );*/ 
+	writeToFile( compressedData, outputSize, "database" );
 	
 	/*showOffEncoding( data, dataSize );*/
 
