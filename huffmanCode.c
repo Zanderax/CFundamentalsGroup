@@ -124,6 +124,5 @@ uint countLeafs( Node *node )
 	{
 		leafs += countLeafs( node->right );
 	}
-
 	return leafs;
 }

@@ -84,7 +84,7 @@ uint countUnique( byte* list, uint size )
 	{
 		if ( !isIn( unique, count, list[i] ) )
 		{
-			unique[count] = list[i];
+			unique[0] = list[i];
 			count++;
 		}
 	}

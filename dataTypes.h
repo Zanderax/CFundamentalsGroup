@@ -10,10 +10,12 @@ typedef int bool;
 
 #define TRUE 1
 #define FALSE 0
+#define MAX_CARDLIST_SIZE 51
 
 
 #define arraySize 40 
 #define BYTE_SIZE 8
+#define UINT_BYTES 4
 
 /* 
 	The theroetical maximum size for the headers is 66048 bytes.
@@ -21,17 +23,16 @@ typedef int bool;
 */
 #define MAX_HEADER_SIZE 66048 
 
-typedef struct 
-{
+typedef struct{
 	char first_name[MAX_NAME_SIZE];
 	char initial;
 	char last_name[MAX_NAME_SIZE];
-	long long unsigned int cardNumber;
-	unsigned int month;
-	unsigned int year;
-	unsigned int cvc;
-	unsigned int ID;
-} Card;
+	long long int cardnumber;
+	int month;
+	int year;
+	int cvc;
+	int ID;
+}card_t;
 
 typedef struct Node Node;
 
@@ -53,7 +54,7 @@ typedef struct CodeElement
 typedef struct Code
 {
 	unsigned char elementsCount;
-	uint bytesForPath;
+	byte bytesForPath;
 	CodeElement *elements;
 } Code;
 

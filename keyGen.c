@@ -1,10 +1,4 @@
-#include "keygen.h"
-
-int main( void )
-{
-	generateKey();
-	return 0;
-}
+#include "keyGen.h"
 
 void generateKey( void )
 {

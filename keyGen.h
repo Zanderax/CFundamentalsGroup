@@ -5,9 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "../dataTypes.h"
+#include "dataTypes.h"
 
-int main( void );
 void generateKey( void );
 
 #endif /* KEYGEN */

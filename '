@@ -5,17 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "creditCard.h"
+#include <creditCard.h>
 #include "dataTypes.h"
 #include "bytelist.h"
 #include "huffmanTree.h"
 #include "huffmanCode.h"
-#include "keyGen.h"
 
 void save( card_t *cards, int cardsRegistered );
 int load( card_t *cards );
 uint cardListToByteArray( card_t *cards, int cardsRegistered, byte *data );
-int byteArrayToCardList( byte* decompressedData, card_t *cards, uint dataSize );
+int byteArrayToCardList( byte* decompressedData, card_t *cards, uint dataSize  );
 byte* longLongIntToByteArray( long long int data );
 long long int byteArrayToLongLongInt( byte *bytes );
 byte* intToByteArray( int data );

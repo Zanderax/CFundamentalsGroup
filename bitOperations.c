@@ -5,7 +5,7 @@ void setBit( byte *data, int bit, int value )
 	/* Swap the endianess of the bit so it writes from left to right */
 	if( bit < 0 || bit > 7 || ( value != 0 && value != 1 ) )
 	{
-		printf("ERROR");
+		/*printf("ERROR");*/
 		return;
 	}
 	*data ^= (-value ^ *data ) & ( 1 << bit );
